@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportsBook - Player Search & Team Making</title>
+    <style>
+      :root {
+        --accent-color: #0782da;
+        --bg-color: #1a1a1a; /* Body background: dark grey */
+        --header-footer-bg: #000000; /* Header and Footer: black */
+        --playercard-bg: #333333; /* Player card background: lighter dark grey */
+        --playercard-border: #444444; /* Player card border */
+        --light-grey: #cccccc;
+        --white: #ffffff;
+        --input-bg: #ffffff;
+        --input-text: #555555;
+        --font-family: 'Helvetica Neue', Arial, sans-serif;
+      }
+      /* Basic Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: var(--font-family);
+        background: var(--bg-color);
+        color: #eee;
+        line-height: 1.5;
+        padding: 0 20px;
+      }
+      a {
+        text-decoration: none;
+      }
+      /* HEADER */
+      header {
+        background-color: var(--header-footer-bg);
+        padding: 15px 0;
+        width: 100%;
+      }
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+      }
+      .header-left {
+        display: flex;
+        align-items: center;
+      }
+      .header-left img {
+        /* Increase the logo size by 75% (from 50px to approx 88px) */
+        height: 88px;
+        margin-right: 10px;
+      }
+      .header-left h1 {
+        font-size: 1.8rem;
+        color: var(--accent-color);
+        font-weight: 600;
+      }
+      .header-right {
+        margin-left: auto;
+      }
+      .header-right nav a {
+        margin-left: 20px;
+        color: var(--light-grey);
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .header-right nav a:hover {
+        color: var(--white);
+      }
+      /* MAIN CONTAINER */
+      .main-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px 40px;
+      }
+      /* TABS */
+      .tabs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      .tabs button {
+        flex: 1;
+        padding: 12px 0;
+        background: transparent;
+        border: none;
+        color: var(--light-grey);
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+      }
+      .tabs button.active,
+      .tabs button:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+      }
+      /* MATCHMAKING SECTION */
+      #matchmakingSection {
+        display: block;
+        margin-bottom: 20px;
+      }
+      .search-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      .search-container input[type="text"] {
+        flex: 1;
+        padding: 12px;
+        font-size: 1rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--input-text);
+      }
+      .search-container input[type="text"]::placeholder {
+        color: var(--light-grey);
+      }
+      .filters {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .filters select {
+        padding: 10px;
+        border: 1px solid var(--accent-color);
+        border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--input-text);
+        font-size: 0.95rem;
+      }
+      /* TEAM MAKING FORM */
+      #teamMakingSection {
+        display: none;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .team-making-form {
+        display: inline-block;
+        text-align: left;
+        margin-bottom: 10px;
+        width: 300px;
+      }
+      .team-making-form select,
+      .team-making-form input {
+        padding: 12px;
+        font-size: 1rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--input-text);
+        margin-bottom: 10px;
+        width: 100%;
+      }
+      .team-making-form .date-time-group {
+        display: flex;
+        gap: 10px;
+      }
+      .team-making-form .date-time-group input {
+        width: calc(50% - 5px);
+      }
+      .team-making-form button {
+        padding: 12px 24px;
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s;
+        display: block;
+        margin: 10px auto 0;
+      }
+      .team-making-form button:hover {
+        background-color: #0f5da1;
+      }
+      /* INVITE FORM */
+      .invite-form {
+        display: none;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .invite-form input,
+      .invite-form button {
+        padding: 12px;
+        font-size: 1rem;
+        border: 1px solid var(--accent-color);
+        border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--input-text);
+        margin: 10px 5px;
+      }
+      .invite-form button {
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .invite-form button:hover {
+        background-color: #0f5da1;
+      }
+      /* RESULTS GRID: 7 columns per row */
+      .results {
+        display: grid;
+        grid-template-columns: repeat(7, 150px);
+        justify-content: center;
+        gap: 5px;
+      }
+      .player-card {
+        background: var(--playercard-bg);
+        width: 150px;
+        height: 200px;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid var(--playercard-border);
+        /* Center content vertically and horizontally */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: default;
+      }
+      .player-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+      }
+      .player-card img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        border: 1px solid var(--playercard-border);
+      }
+      .player-card h3 {
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 4px;
+        text-align: center;
+        color: var(--accent-color);
+      }
+      .player-card p {
+        font-size: 0.8rem;
+        text-align: center;
+        color: var(--light-grey);
+        margin-bottom: 0;
+      }
+      /* PAGINATION CONTROLS */
+      .pagination {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .pagination button {
+        margin: 0 5px;
+        padding: 5px 10px;
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .pagination button:hover {
+        background-color: #0f5da1;
+      }
+      .pagination span {
+        margin: 0 5px;
+        padding: 5px 10px;
+        color: var(--white);
+      }
+      /* TEAM MAKING SECTION (Alternate Invite Button) */
+      .team-container {
+        margin-top: 20px;
+        padding: 15px;
+        background: var(--dark-grey);
+        border: 1px solid var(--accent-color);
+        border-radius: 6px;
+        display: none;
+        text-align: center;
+      }
+      .team-settings {
+        margin-top: 10px;
+      }
+      .team-settings button {
+        padding: 10px 20px;
+        background-color: var(--accent-color);
+        color: var(--bg-color);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+      .team-settings button:hover {
+        background-color: #0f5da1;
+      }
+      /* FOOTER */
+      footer {
+        background-color: var(--header-footer-bg);
+        padding: 20px 0;
+        width: 100%;
+      }
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+        color: var(--light-grey);
+      }
+      .footer-section h3 {
+        color: var(--white);
+        margin-bottom: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      .footer-section ul {
+        list-style: none;
+      }
+      .footer-section ul li {
+        margin-bottom: 6px;
+      }
+      .footer-section ul li a {
+        color: var(--light-grey);
+        transition: color 0.3s;
+      }
+      .footer-section ul li a:hover {
+        color: var(--white);
+      }
+      .footer-note {
+        text-align: center;
+        width: 100%;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: var(--light-grey);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="header-container">
+        <div class="header-left">
+          <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo" />
+          <h1 style="padding-left: 25px;">SportsBook</h1>
+        </div>
+        <div class="header-right">
+          <nav>
+            <a href="#">Sports</a>
+            <a href="#">Live Scoring</a>
+            <a href="#">Core Tools</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+  
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab-button active" data-tab="matchmaking"><b>MATCHMAKING</b></button>
+        <button class="tab-button" data-tab="teammaking"><b>TEAM-MAKING</b></button>
+      </div>
+  
+      <!-- MATCHMAKING SECTION -->
+      <div id="matchmakingSection">
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search players by Name" />
+          <div class="filters">
+            <select id="sportFilter">
+              <option value="">All Sports</option>
+              <option value="football">Football</option>
+              <option value="basketball">Basketball</option>
+              <option value="volleyball">Volleyball</option>
+              <option value="cricket">Cricket</option>
+              <option value="table tennis">Table Tennis</option>
+              <option value="lawn tennis">Lawn Tennis</option>
+              <option value="badminton">Badminton</option>
+            </select>
+            <select id="skillFilter">
+              <option value="">All Levels</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <!-- TEAM MAKING FORM SECTION -->
+      <div id="teamMakingSection">
+        <form class="team-making-form" id="teamForm">
+          <select id="teamSport">
+            <option value="">Select Sport</option>
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+            <option value="volleyball">Volleyball</option>
+            <option value="cricket">Cricket</option>
+            <option value="table tennis">Table Tennis</option>
+            <option value="lawn tennis">Lawn Tennis</option>
+            <option value="badminton">Badminton</option>
+          </select>
+          <button type="button" id="loadEligiblePlayers">Show Eligible Players</button>
+        </form>
+        <!-- INVITE FORM -->
+        <div class="invite-form" id="inviteForm">
+          <p id="eligibleCount"></p>
+          <input type="text" id="venueInput" placeholder="Venue" />
+          <div class="date-time-group">
+            <input type="date" id="dateInput" />
+            <input type="time" id="timeInput" />
+          </div>
+          <button type="button" id="sendInvites"><b>Send Invites</b></button>
+        </div>
+      </div>
+  
+      <!-- RESULTS SECTION -->
+      <section class="results" id="resultsContainer"></section>
+  
+      <!-- PAGINATION CONTROLS -->
+      <div class="pagination" id="paginationContainer"></div>
+  
+      <!-- TEAM MAKING SECTION (Alternate Invite Button) -->
+      <div class="team-container" id="teamContainer">
+        <h3>Invite All Eligible Players</h3>
+        <div class="team-settings">
+          <button id="sendInvitesAlt">Send Invites</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>Platform</h3>
+          <ul>
+            <li><a href="#">Scan</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Leaderboard</a></li>
+            <li><a href="#">Live Scoring</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Features</h3>
+          <ul>
+            <li><a href="#">Occupancy</a></li>
+            <li><a href="#">Player Search</a></li>
+            <li><a href="#">Booking</a></li>
+            <li><a href="#">Others</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-note">
+        © 2025 SportsBook. All rights reserved.
+      </div>
+    </footer>
+  
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sample players data (50 players)
+        const players = [
+          { id: 1, name: "Alice", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 2, name: "Bob", sport: "basketball", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 3, name: "Charlie", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 4, name: "Diana", sport: "football", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 5, name: "Ethan", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 6, name: "Fiona", sport: "volleyball", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 7, name: "George", sport: "football", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 8, name: "Hannah", sport: "basketball", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 9, name: "Ivan", sport: "volleyball", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 10, name: "Julia", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 11, name: "Kevin", sport: "basketball", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 12, name: "Laura", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 13, name: "Mike", sport: "football", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 14, name: "Nina", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 15, name: "Oscar", sport: "volleyball", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 16, name: "Paul", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 17, name: "Quincy", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 18, name: "Rita", sport: "cricket", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 19, name: "Sam", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 20, name: "Tina", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 21, name: "Uma", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 22, name: "Victor", sport: "table tennis", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 23, name: "Wendy", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 24, name: "Xander", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 25, name: "Yara", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 26, name: "Zack", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 27, name: "Amber", sport: "lawn tennis", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 28, name: "Brian", sport: "lawn tennis", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 29, name: "Cara", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 30, name: "Derek", sport: "lawn tennis", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 31, name: "Eva", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 32, name: "Frank", sport: "badminton", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 33, name: "Grace", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 34, name: "Henry", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 35, name: "Isla", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 36, name: "Jack", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 37, name: "Kara", sport: "basketball", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 38, name: "Liam", sport: "volleyball", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 39, name: "Mia", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 40, name: "Noah", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 41, name: "Olivia", sport: "lawn tennis", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 42, name: "Peter", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 43, name: "Quinn", sport: "football", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 44, name: "Rose", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 45, name: "Steve", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
+          { id: 46, name: "Tara", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 47, name: "Umar", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 48, name: "Vera", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
+          { id: 49, name: "Will", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
+          { id: 50, name: "Xena", sport: "badminton", skill: "beginner", image: "def_avatar.jpg" }
+        ];
+      
+        // For 7 columns and 5 rows per page, show 35 players per page.
+        let playersPerPage = 35;
+        let currentPlayers = [];
+        let activeTab = "matchmaking";
+      
+        // Utility: Capitalize first letter of each word
+        function capitalize(str) {
+          return str.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+        }
+      
+        // Pagination variables
+        let currentPage = 1;
+        let totalPages = 1;
+      
+        // Function to filter and display players (Matchmaking)
+        function displayPlayers() {
+          const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+          const sportFilter = document.getElementById("sportFilter").value;
+          const skillFilter = document.getElementById("skillFilter").value;
+      
+          currentPlayers = players.filter((player) => {
+            const matchesName = player.name.toLowerCase().includes(searchQuery);
+            const matchesSport = sportFilter ? capitalize(player.sport) === capitalize(sportFilter) : true;
+            const matchesSkill = skillFilter ? capitalize(player.skill) === capitalize(skillFilter) : true;
+            return matchesName && matchesSport && matchesSkill;
+          });
+      
+          // Reset pagination for matchmaking
+          currentPage = 1;
+          totalPages = Math.ceil(currentPlayers.length / playersPerPage);
+          renderPlayers();
+          renderPagination();
+        }
+      
+        // Render players for current page
+        function renderPlayers() {
+          const resultsContainer = document.getElementById("resultsContainer");
+          resultsContainer.innerHTML = "";
+      
+          const startIndex = (currentPage - 1) * playersPerPage;
+          const slicedPlayers = currentPlayers.slice(startIndex, startIndex + playersPerPage);
+      
+          slicedPlayers.forEach((player) => {
+            const card = document.createElement("div");
+            card.className = "player-card";
+            card.innerHTML = `
+              <img src="${player.image}" alt="${player.name}" />
+              <h3>${player.name}</h3>
+              <p>Sport: ${capitalize(player.sport)}</p>
+              <p>Skill: ${capitalize(player.skill)}</p>
+            `;
+            if (activeTab === "matchmaking") {
+              card.addEventListener("click", () => {
+                alert("Clicked on " + player.name + " for more details or actions!");
+              });
+            }
+            resultsContainer.appendChild(card);
+          });
+        }
+      
+        // Render pagination controls (Previous, current page info, Next)
+        function renderPagination() {
+          const paginationContainer = document.getElementById("paginationContainer");
+          paginationContainer.innerHTML = "";
+      
+          const prevButton = document.createElement("button");
+          prevButton.textContent = "Previous";
+          prevButton.disabled = currentPage === 1;
+          prevButton.addEventListener("click", () => {
+            if (currentPage > 1) {
+              currentPage--;
+              renderPlayers();
+              renderPagination();
+            }
+          });
+          paginationContainer.appendChild(prevButton);
+      
+          const pageInfo = document.createElement("span");
+          pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+          paginationContainer.appendChild(pageInfo);
+      
+          const nextButton = document.createElement("button");
+          nextButton.textContent = "Next";
+          nextButton.disabled = currentPage === totalPages;
+          nextButton.addEventListener("click", () => {
+            if (currentPage < totalPages) {
+              currentPage++;
+              renderPlayers();
+              renderPagination();
+            }
+          });
+          paginationContainer.appendChild(nextButton);
+        }
+      
+        // Team Making: Load eligible players based on sport in the team-making form
+        document.getElementById("loadEligiblePlayers").addEventListener("click", function () {
+          const teamSport = document.getElementById("teamSport").value;
+          if (!teamSport) {
+            alert("Please select a sport.");
+            return;
+          }
+          currentPlayers = players.filter(
+            (player) => capitalize(player.sport) === capitalize(teamSport)
+          );
+          currentPage = 1;
+          totalPages = Math.ceil(currentPlayers.length / playersPerPage);
+          renderPlayers();
+          renderPagination();
+      
+          // Show the invite form and display eligible count
+          document.getElementById("inviteForm").style.display = "block";
+          document.getElementById("eligibleCount").textContent = `Eligible Players: ${currentPlayers.length}`;
+        });
+      
+        // Send Invites: Invite all eligible players (Team Making)
+        document.getElementById("sendInvites").addEventListener("click", function () {
+          if (currentPlayers.length === 0) {
+            alert("No eligible players found!");
+            return;
+          }
+          const teamSize = document.getElementById("teamSizeInput") ? document.getElementById("teamSizeInput").value : "";
+          const venue = document.getElementById("venueInput").value;
+          const matchTime = document.getElementById("dateInput").value + " " + document.getElementById("timeInput").value;
+          if (!venue || !matchTime.trim()) {
+            alert("Fill in all details!");
+            return;
+          }
+          alert(`Invites sent to ${currentPlayers.length} players for a match at ${venue} on ${matchTime}.`);
+        });
+      
+        // Tab Switching: Default is Matchmaking
+        const tabButtons = document.querySelectorAll(".tab-button");
+        tabButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            tabButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+            activeTab = button.getAttribute("data-tab");
+            if (activeTab === "matchmaking") {
+              document.getElementById("matchmakingSection").style.display = "block";
+              document.getElementById("teamMakingSection").style.display = "none";
+              document.getElementById("inviteForm").style.display = "none";
+              displayPlayers();
+            } else {
+              document.getElementById("matchmakingSection").style.display = "none";
+              document.getElementById("teamMakingSection").style.display = "block";
+              document.getElementById("resultsContainer").innerHTML = "";
+              document.getElementById("paginationContainer").innerHTML = "";
+              document.getElementById("inviteForm").style.display = "none";
+            }
+          });
+        });
+      
+        document.getElementById("searchInput").addEventListener("input", displayPlayers);
+        document.getElementById("sportFilter").addEventListener("change", displayPlayers);
+        document.getElementById("skillFilter").addEventListener("change", displayPlayers);
+      
+        // Initial display in matchmaking mode
+        displayPlayers();
+      });
+    </script>
+  </body>
+</html>
