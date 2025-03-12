@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Toss - Sports Book</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            background: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-bottom: 60px; /* Ensures content doesn't overlap with bottom bar */
+            text-align: center;
+        }
+
+        /* Taskbar (Header) */
+        .taskbar {
+            width: 100%;
+            height: 80px;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 30px;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #00c8ff;
+        }
+
+        /* Coin Toss Container */
+        .content {
+            margin-top: 100px; /* Ensures content is below the taskbar */
+            text-align: center;
+        }
+
+        .coin-toss-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .coin-container {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            transform-style: preserve-3d;
+            margin: 2rem 0;
+        }
+
+        .coin {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
+        }
+
+        .coin-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            overflow: hidden;
+            background: linear-gradient(145deg, #1a1a1a, #333);
+            border: 4px solid #00c8ff;
+        }
+
+        .tails {
+            transform: rotateY(180deg);
+        }
+
+        .coin-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Button */
+        .toss-button {
+            background: linear-gradient(145deg, #00a0c8, #0080a0);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .toss-button:hover {
+            background: linear-gradient(145deg, #00b0d8, #0090b0);
+        }
+
+        .result {
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            color: #00c8ff;
+            font-weight: bold;
+        }
+
+        /* Bottom Navigation Bar */
+        .bottom-bar {
+            width: 100%;
+            height: 50px;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .bottom-bar a {
+            color: #00c8ff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .bottom-bar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Coin Flip Animation */
+        @keyframes flip {
+            0% { transform: rotateY(0); }
+            100% { transform: rotateY(1800deg); }
+        }
+
+        .flipping {
+            animation: flip 3s ease-out forwards;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Taskbar -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo">
+                    <span class="logo-text">SportsBook</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="dropdown">
+                        <a href="#">Sports <i class="fas fa-chevron-down"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">Live Scoring <i class="fas fa-chevron-down"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="cointoss.html">Coin Toss <i class="fas fa-chevron-down"></i></a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <a href="#" class="login-btn">Log in <i class="fas fa-chevron-down"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Coin Toss Simulator</h1>
+        <p>Click the button below to flip the coin!</p>
+
+        <div class="coin-toss-container">
+            <div class="coin-container">
+                <div class="coin" id="coin">
+                    <div class="coin-face heads">
+                        <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="Heads" class="coin-logo">
+                    </div>
+                    <div class="coin-face tails">
+                        <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="Tails" class="coin-logo">
+                    </div>
+                </div>
+            </div>
+
+            <button class="toss-button" id="toss-button">Toss Coin</button>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <footer class="bottom-bar">
+        <p>&copy; 2025 Sports Book | Made by Kirat and Priyansh</p>
+        <nav>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </footer>
+
+    <!-- Coin Toss Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const coin = document.getElementById('coin');
+            const tossButton = document.getElementById('toss-button');
+            const resultDisplay = document.getElementById('result');
+            let isAnimating = false;
+
+            tossButton.addEventListener('click', function() {
+                if (isAnimating) return;
+                isAnimating = true;
+                resultDisplay.textContent = '';
+
+                coin.classList.remove('flipping');
+                void coin.offsetWidth;
+                coin.classList.add('flipping');
+
+                const result = Math.random() < 0.5 ? 'Heads' : 'Tails';
+                setTimeout(() => {
+                    coin.style.transform = result === 'Heads' ? 'rotateY(1800deg)' : 'rotateY(1980deg)';
+                    resultDisplay.textContent = result;
+                    isAnimating = false;
+                }, 3000);
+            });
+        });
+    </script>
+
+</body>
+</html>
