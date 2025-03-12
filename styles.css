@@ -1,4 +1,17 @@
 /* Reset and Base Styles */
+:root {
+  --accent-color: #0782da;
+  --bg-color: #1a1a1a; /* Body background: dark grey */
+  --header-footer-bg: #000000; /* Header and Footer: black */
+  --playercard-bg: #333333; /* Player card background: lighter dark grey */
+  --playercard-border: #444444; /* Player card border */
+  --light-grey: #cccccc;
+  --white: #ffffff;
+  --input-bg: #ffffff;
+  --input-text: #555555;
+  --font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,10 +19,11 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: var(--font-family);
   line-height: 1.6;
-  color: #fff;
-  background-color: #1a1a1a;
+  color: var(--white);
+  background-color: var(--bg-color);
+  padding: 0;
 }
 
 .container {
@@ -33,62 +47,75 @@ img {
   height: auto;
 }
 
-/* Header Styles */
+/* Header Styles - Landing Page */
 header {
-  background-color: #1a1a1a;
+  background-color: var(--header-footer-bg);
   padding: 15px 0;
   border-bottom: 1px solid #333;
+  width: 100%;
 }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+
+/* Adjusting Logo Position */
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 10px; /* Moves logo and text slightly left */
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo img {
-  height: 60px;
+  height: 50px;
+  margin-right: 8px;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Centering Navigation */
+.main-nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .main-nav ul {
   display: flex;
+  gap: 30px;
 }
 
 .main-nav li {
-  margin: 0 15px;
-  position: relative;
+  list-style: none;
 }
 
 .main-nav a {
   color: #fff;
   font-weight: 500;
-  padding: 10px 0;
-  display: flex;
-  align-items: center;
+  font-size: 16px;
+  text-decoration: none;
 }
 
-.main-nav a i {
-  margin-left: 5px;
-  font-size: 12px;
-}
-
+/* Right Section */
 .header-right {
   display: flex;
   align-items: center;
-}
-
-.globe-btn {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  margin-right: 15px;
-}
-
-.contact-btn {
-  color: #fff;
-  margin-right: 15px;
 }
 
 .login-btn {
@@ -98,11 +125,67 @@ header {
   border-radius: 4px;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
 
 .login-btn i {
   margin-left: 5px;
   font-size: 12px;
+}
+
+/* Header Styles - Player Search Page */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left img {
+  height: 88px;
+  margin-right: 10px;
+}
+
+.header-left h1 {
+  font-size: 1.8rem;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.header-left .logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-img {
+  height: 40px;
+}
+
+.header-right {
+  margin-left: auto;
+}
+
+.header-right nav {
+  display: flex;
+}
+
+.header-right nav a {
+  margin-left: 20px;
+  color: var(--light-grey);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header-right nav a:hover {
+  color: var(--white);
 }
 
 /* QR Code and Player Details Section */
@@ -129,7 +212,7 @@ header {
 }
 
 .qr-code p {
-  color: #ccc;
+  color: var(--light-grey);
   font-size: 14px;
 }
 
@@ -140,7 +223,7 @@ header {
 .player-details h2 {
   margin-bottom: 15px;
   font-size: 24px;
-  color: #0099ff;
+  color: var(--accent-color);
 }
 
 .player-info {
@@ -161,17 +244,17 @@ header {
 .label {
   font-weight: bold;
   width: 100px;
-  color: #ccc;
+  color: var(--light-grey);
 }
 
 .value {
-  color: #fff;
+  color: var(--white);
 }
 
 /* Hero Section */
 .hero-section {
   padding: 60px 0;
-  background-color: #1a1a1a;
+  background-color: var(--bg-color);
 }
 
 .hero-content {
@@ -192,7 +275,7 @@ header {
 }
 
 .hero-text p {
-  color: #ccc;
+  color: var(--light-grey);
   font-size: 18px;
   margin-bottom: 30px;
   max-width: 500px;
@@ -200,8 +283,8 @@ header {
 
 .cta-btn {
   display: inline-block;
-  background-color: #fff;
-  color: #1a1a1a;
+  background-color: var(--white);
+  color: var(--bg-color);
   padding: 12px 30px;
   border-radius: 4px;
   font-weight: 600;
@@ -225,7 +308,7 @@ header {
 
 /* Tabs Section */
 .tabs-section {
-  background-color: #1a1a1a;
+  background-color: var(--bg-color);
   padding: 30px 0;
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;
@@ -237,7 +320,7 @@ header {
 }
 
 .tab-link {
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
   font-size: 18px;
   padding: 10px 0;
@@ -249,7 +332,7 @@ header {
 .tab-link i {
   margin-left: 8px;
   font-size: 14px;
-  color: #0099ff;
+  color: var(--accent-color);
 }
 
 .tab-link:after {
@@ -259,7 +342,7 @@ header {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #0099ff;
+  background-color: var(--accent-color);
   transition: width 0.3s ease;
 }
 
@@ -270,7 +353,7 @@ header {
 /* Cards Section */
 .cards-section {
   padding: 60px 0;
-  background-color: #1a1a1a;
+  background-color: var(--bg-color);
 }
 
 .cards-grid {
@@ -313,18 +396,19 @@ header {
 .card-content h3 {
   margin-bottom: 10px;
   font-size: 20px;
-  color: #0099ff;
+  color: var(--accent-color);
 }
 
 .card-content p {
-  color: #ccc;
+  color: var(--light-grey);
   font-size: 14px;
 }
 
-/* Footer */
+/* Footer - Landing Page */
 footer {
-  background-color: #222;
+  background-color: var(--header-footer-bg);
   padding: 60px 0 20px;
+  width: 100%;
 }
 
 .footer-content {
@@ -332,6 +416,9 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .footer-logo {
@@ -353,7 +440,7 @@ footer {
 }
 
 .footer-column h4 {
-  color: #fff;
+  color: var(--white);
   margin-bottom: 20px;
   font-size: 18px;
 }
@@ -363,12 +450,12 @@ footer {
 }
 
 .footer-column ul li a {
-  color: #ccc;
+  color: var(--light-grey);
   transition: color 0.3s ease;
 }
 
 .footer-column ul li a:hover {
-  color: #0099ff;
+  color: var(--accent-color);
 }
 
 .footer-bottom {
@@ -377,22 +464,336 @@ footer {
   align-items: center;
   padding-top: 20px;
   border-top: 1px solid #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .footer-bottom p {
-  color: #ccc;
+  color: var(--light-grey);
   font-size: 14px;
 }
 
 .social-links a {
-  color: #ccc;
+  color: var(--light-grey);
   margin-left: 15px;
   font-size: 18px;
   transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-  color: #0099ff;
+  color: var(--accent-color);
+}
+
+/* Footer - Player Search Page */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  color: var(--light-grey);
+}
+
+.footer-section h3 {
+  color: var(--white);
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 6px;
+}
+
+.footer-section ul li a {
+  color: var(--light-grey);
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: var(--white);
+}
+
+.footer-note {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: var(--light-grey);
+}
+
+/* Player Search Page Specific Styles */
+.main-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px 40px;
+}
+
+/* TABS for Player Search */
+.main-container .tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.main-container .tabs button {
+  flex: 1;
+  padding: 12px 0;
+  background: transparent;
+  border: none;
+  color: var(--light-grey);
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.main-container .tabs button.active,
+.main-container .tabs button:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+/* MATCHMAKING SECTION */
+#matchmakingSection {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.search-container input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+}
+
+.search-container input[type="text"]::placeholder {
+  color: var(--light-grey);
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filters select {
+  padding: 10px;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  font-size: 0.95rem;
+}
+
+/* TEAM MAKING FORM */
+#teamMakingSection {
+  display: none;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.team-making-form {
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+.team-making-form select,
+.team-making-form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.team-making-form .date-time-group {
+  display: flex;
+  gap: 10px;
+}
+
+.team-making-form .date-time-group input {
+  width: calc(50% - 5px);
+}
+
+.team-making-form button {
+  padding: 12px 24px;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+  display: block;
+  margin: 10px auto 0;
+}
+
+.team-making-form button:hover {
+  background-color: #0f5da1;
+}
+
+/* INVITE FORM */
+.invite-form {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.invite-form input,
+.invite-form button {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  margin: 10px 5px;
+}
+
+.invite-form button {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.invite-form button:hover {
+  background-color: #0f5da1;
+}
+
+/* RESULTS GRID: 7 columns per row */
+.results {
+  display: grid;
+  grid-template-columns: repeat(7, 150px);
+  justify-content: center;
+  gap: 5px;
+}
+
+.player-card {
+  background: var(--playercard-bg);
+  width: 150px;
+  height: 200px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--playercard-border);
+  /* Center content vertically and horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.player-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.player-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  border: 1px solid var(--playercard-border);
+}
+
+.player-card h3 {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-align: center;
+  color: var(--accent-color);
+}
+
+.player-card p {
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--light-grey);
+  margin-bottom: 0;
+}
+
+/* PAGINATION CONTROLS */
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #0f5da1;
+}
+
+.pagination span {
+  margin: 0 5px;
+  padding: 5px 10px;
+  color: var(--white);
+}
+
+/* TEAM MAKING SECTION (Alternate Invite Button) */
+.team-container {
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--playercard-bg);
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  display: none;
+  text-align: center;
+}
+
+.team-settings {
+  margin-top: 10px;
+}
+
+.team-settings button {
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.team-settings button:hover {
+  background-color: #0f5da1;
 }
 
 /* Responsive Styles */
@@ -421,6 +822,10 @@ footer {
 
   .qr-player-content {
     flex-direction: column;
+  }
+
+  .results {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
 
@@ -462,6 +867,33 @@ footer {
   .social-links a:first-child {
     margin-left: 0;
   }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  .filters {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-left {
+    margin-bottom: 15px;
+    justify-content: center;
+  }
+
+  .header-right nav {
+    justify-content: center;
+  }
+
+  .header-right nav a:first-child {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: 576px) {
@@ -472,4 +904,19 @@ footer {
   .footer-column {
     flex-basis: 100%;
   }
+
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .player-card {
+    width: 100%;
+  }
+
+  .footer-section {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
 }
+
