@@ -1498,3 +1498,318 @@ footer {
     }
 }
 
+/* Authentication Popup Styles */
+
+/* Overlay for the popup */
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.auth-overlay.active {
+  opacity: 1;
+}
+
+/* Main popup container */
+.auth-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 90%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-popup.active {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.auth-popup-content {
+  padding: 2.5rem;
+  position: relative;
+}
+
+/* Close button */
+.auth-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.auth-close-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+/* Tabs */
+.auth-tabs {
+  display: flex;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  gap: 8px;
+}
+
+.auth-tab-btn {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.auth-tab-btn:hover {
+  color: #222;
+}
+
+.auth-tab-btn.active {
+  color: #000;
+}
+
+.auth-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #007BFF, #42a5f5);
+  border-radius: 2px;
+}
+
+/* Forms */
+.auth-forms {
+  position: relative;
+}
+
+.auth-form {
+  display: none;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-form-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.auth-form-header h2 {
+  margin: 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #222;
+}
+
+.auth-form-header p {
+  color: #666;
+  font-size: 14px;
+  margin: 8px 0 0;
+}
+
+.auth-chip {
+  display: inline-block;
+  padding: 4px 12px;
+  background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(0, 123, 255, 0.1));
+  color: #007BFF;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Input groups */
+.auth-input-group {
+  margin-bottom: 20px;
+}
+
+.auth-input-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+.auth-input-wrapper {
+  position: relative;
+}
+
+.auth-input-wrapper input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.auth-input-wrapper input:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 0 2px rgba(66, 165, 245, 0.2);
+}
+
+/* Remember me and forgot password */
+.auth-remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.auth-remember {
+  display: flex;
+  align-items: center;
+}
+
+.auth-remember input {
+  margin-right: 8px;
+}
+
+.auth-forgot-btn {
+  background: transparent;
+  border: none;
+  color: #007BFF;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.auth-forgot-btn:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Submit button */
+.auth-submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.auth-submit-btn:hover {
+  background: #0062cc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+}
+
+.auth-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Terms and conditions */
+.auth-terms {
+  margin: 16px 0 24px;
+  font-size: 13px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.auth-terms input {
+  margin-right: 8px;
+  margin-top: 3px;
+}
+
+.auth-terms a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.auth-terms a:hover {
+  text-decoration: underline;
+}
+
+/* Back button for forgot password */
+.auth-back-btn {
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+  padding: 8px;
+  transition: all 0.2s ease;
+}
+
+.auth-back-btn:hover {
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .auth-popup-content {
+    padding: 1.5rem;
+  }
+  
+  .auth-popup {
+    width: 95%;
+    max-width: 350px;
+  }
+  
+  .auth-form-header h2 {
+    font-size: 20px;
+  }
+  
+  .auth-submit-btn {
+    padding: 10px;
+  }
+}
