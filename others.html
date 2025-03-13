@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SportsBook - Community & Feedback</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Extra CSS for the Community & Feedback page */
+    .assistance-nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .assistance-nav button {
+      padding: 12px 24px;
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .assistance-nav button.active {
+      background-color: #0f5da1;
+      color: var(--white);
+    }
+    .assistance-nav button:hover {
+      background-color: #0a446d;
+    }
+    /* Initially hide both sections */
+    .community-section,
+    .feedback-section {
+      display: none;
+      padding-bottom: 40px; /* Extra gap before footer */
+    }
+    .community-section.active,
+    .feedback-section.active {
+      display: block;
+    }
+    /* Center-align section headings */
+    .community-section h2,
+    .feedback-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    /* Community Section */
+    .community-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: left;
+    }
+    .community-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+      background-color: var(--playercard-bg);
+      border: 1px solid var(--playercard-border);
+      border-radius: 4px;
+    }
+    .community-item img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+    .community-item a {
+      font-size: 18px;
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+    /* Feedback Section */
+    .feedback-form {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: left;
+      background-color: var(--playercard-bg);
+      padding: 20px;
+      border: 1px solid var(--playercard-border);
+      border-radius: 4px;
+    }
+    .feedback-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .feedback-form input[type="text"],
+    .feedback-form textarea,
+    .feedback-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid var(--accent-color);
+      border-radius: 4px;
+      background-color: var(--input-bg);
+      color: var(--input-text);
+    }
+    .feedback-form textarea {
+      resize: vertical;
+      height: 100px;
+    }
+    /* Hide the submit button initially */
+    .feedback-form button.submit-btn {
+      display: none;
+      padding: 12px 24px;
+      background-color: var(--accent-color);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      margin: 10px auto 0;
+    }
+    .feedback-form button.submit-btn:hover {
+      background-color: #0f5da1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (from your homepage) -->
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <a href="index.html" class="logo-link">
+          <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo">
+          <span class="logo-text">SportsBook</span>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li class="dropdown"><a href="#">Sports <i class="fas fa-chevron-down"></i></a></li>
+          <li class="dropdown"><a href="live_scoring.html">Live Scoring <i class="fas fa-chevron-down"></i></a></li>
+          <li class="dropdown"><a href="cointoss.html">Coin Toss <i class="fas fa-chevron-down"></i></a></li>
+        </ul>
+      </nav>
+      <div class="header-right">
+        <a href="#" class="login-btn">Log In <i class="fas fa-chevron-down"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <h1 class="page-title" style="padding:50px">Community & Feedback</h1>
+    
+    <!-- Assistance Navigation Bar -->
+    <div class="assistance-nav">
+      <button id="joinCommunityBtn" onclick="showAssistance('community')">Join a Community</button>
+      <button id="feedbackBtn" onclick="showAssistance('feedback')">Give Feedback</button>
+    </div>
+    
+    <!-- Community Section (initially hidden) -->
+    <section id="communitySection" class="community-section">
+      <h2>Join Our Communities</h2>
+      <div class="community-list">
+        <div class="community-item">
+          <a href="https://chat.whatsapp.com/yourwhatsapplink" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+          </a>
+          <a href="https://chat.whatsapp.com/yourwhatsapplink" target="_blank">WhatsApp Community</a>
+        </div>
+        <div class="community-item">
+          <a href="https://www.reddit.com/r/yourcommunity" target="_blank">
+            <!-- Updated Reddit logo URL -->
+            <img src="https://www.redditstatic.com/desktop2x/img/favicon/android-icon-192x192.png" alt="Reddit">
+          </a>
+          <a href="https://www.reddit.com/r/yourcommunity" target="_blank">Reddit Community</a>
+        </div>
+        <div class="community-item">
+          <a href="https://www.facebook.com/groups/yourcommunity" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+          </a>
+          <a href="https://www.facebook.com/groups/yourcommunity" target="_blank">Facebook Group</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Feedback Section (initially hidden) -->
+    <section id="feedbackSection" class="feedback-section">
+      <h2>Give Your Feedback</h2>
+      <div class="feedback-form">
+        <label for="feedbackType">What is your feedback regarding?</label>
+        <select id="feedbackType" onchange="toggleFeedbackOptions()">
+          <option value="">Select</option>
+          <option value="player">Player</option>
+          <option value="equipment">Sports Equipment</option>
+          <option value="others">Others</option>
+        </select>
+        
+        <!-- Player Feedback -->
+        <div id="playerFeedback" class="feedback-options" style="display: none;">
+          <label for="playerName">Player Name:</label>
+          <input type="text" id="playerName" placeholder="Enter the player's name" />
+          <label for="playerFeedbackText">Feedback about the Player:</label>
+          <textarea id="playerFeedbackText" placeholder="Enter your feedback about the player"></textarea>
+        </div>
+        
+        <!-- Equipment Feedback -->
+        <div id="equipmentFeedback" class="feedback-options" style="display: none;">
+          <label for="sportName">Sport Name:</label>
+          <input type="text" id="sportName" placeholder="Enter the sport name" />
+          <label for="equipmentFeedbackText">Describe Your Problem:</label>
+          <textarea id="equipmentFeedbackText" placeholder="Describe the issues with the equipment"></textarea>
+        </div>
+        
+        <!-- Others Feedback -->
+        <div id="othersFeedback" class="feedback-options" style="display: none;">
+          <label for="othersFeedbackText">Describe Your Problem:</label>
+          <textarea id="othersFeedbackText" placeholder="Enter your feedback"></textarea>
+        </div>
+        
+        <button type="button" id="submitFeedbackBtn" class="submit-btn" onclick="submitFeedback()">Submit Feedback</button>
+      </div>
+    </section>
+  </main>
+
+ <!-- Footer -->
+ <footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <div class="footer-column">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#">Scan</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="#">Live Scoring</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Features</h4>
+                <ul>
+                    <li><a href="#">Occupancy</a></li>
+                    <li><a href="#">Player Search</a></li>
+                    <li><a href="#">Booking</a></li>
+                    <li><a href="#">Others</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Tutorials</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy;developed by kirat,priyansh and avnish</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/kirat.g09/?utm_source=qr"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</footer>
+  
+  <script>
+    // Initially, hide both sections until a navigation button is clicked.
+    document.getElementById('communitySection').classList.remove('active');
+    document.getElementById('feedbackSection').classList.remove('active');
+    // Also, hide the submit feedback button initially.
+    document.getElementById('submitFeedbackBtn').style.display = 'none';
+
+    function showAssistance(section) {
+      // Remove active classes from both buttons and sections
+      document.getElementById('joinCommunityBtn').classList.remove('active');
+      document.getElementById('feedbackBtn').classList.remove('active');
+      document.getElementById('communitySection').classList.remove('active');
+      document.getElementById('feedbackSection').classList.remove('active');
+      
+      if (section === 'community') {
+        document.getElementById('joinCommunityBtn').classList.add('active');
+        document.getElementById('communitySection').classList.add('active');
+      } else if (section === 'feedback') {
+        document.getElementById('feedbackBtn').classList.add('active');
+        document.getElementById('feedbackSection').classList.add('active');
+      }
+    }
+    
+    function toggleFeedbackOptions() {
+      var type = document.getElementById('feedbackType').value;
+      document.getElementById('playerFeedback').style.display = (type === 'player') ? 'block' : 'none';
+      document.getElementById('equipmentFeedback').style.display = (type === 'equipment') ? 'block' : 'none';
+      document.getElementById('othersFeedback').style.display = (type === 'others') ? 'block' : 'none';
+      
+      // Show the submit button only if a valid option is selected
+      document.getElementById('submitFeedbackBtn').style.display = (type) ? 'block' : 'none';
+    }
+    
+    function submitFeedback() {
+      var type = document.getElementById('feedbackType').value;
+      if (!type) {
+        alert('Please select a feedback type.');
+        return;
+      }
+      if (type === 'player') {
+        var name = document.getElementById('playerName').value;
+        var feedback = document.getElementById('playerFeedbackText').value;
+        if (!name || !feedback) {
+          alert('Please fill out all player feedback fields.');
+          return;
+        }
+        alert('Player Feedback Submitted for ' + name + '.');
+      } else if (type === 'equipment') {
+        var sport = document.getElementById('sportName').value;
+        var equipFeedback = document.getElementById('equipmentFeedbackText').value;
+        if (!sport || !equipFeedback) {
+          alert('Please fill out all equipment feedback fields.');
+          return;
+        }
+        alert('Equipment Feedback Submitted for ' + sport + '.');
+      } else if (type === 'others') {
+        var otherText = document.getElementById('othersFeedbackText').value;
+        if (!otherText) {
+          alert('Please fill out the feedback field.');
+          return;
+        }
+        alert('Feedback Submitted.');
+      }
+    }
+  </script>
+</body>
+</html>
