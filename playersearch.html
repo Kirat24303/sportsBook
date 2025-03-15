@@ -3,50 +3,145 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SportsBook - Player Search & Team Making</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>SportsBook - Player Search, Team Making & Assistance</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Extra CSS for Assistance & Mentorship Forms */
+      #assistanceSection .assistance-form,
+      #assistanceSection .mentor-form {
+        max-width: 600px;
+        margin: 20px auto 40px;
+        background-color: var(--playercard-bg);
+        padding: 20px;
+        border: 1px solid var(--playercard-border);
+        border-radius: 4px;
+      }
+      #assistanceSection .assistance-form label,
+      #assistanceSection .mentor-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      /* Fixed width for inputs and selects (except textarea) in assistance forms */
+      #assistanceSection .assistance-form select,
+      #assistanceSection .assistance-form input[type="text"],
+      #assistanceSection .assistance-form input[type="time"],
+      #assistanceSection .mentor-form select {
+        width: 150px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid var(--accent-color);
+        border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--input-text);
+      }
+      /* Larger textarea for detailed input */
+      #assistanceSection .assistance-form textarea,
+      #assistanceSection .mentor-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid var(--accent-color);
+        border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--input-text);
+        resize: vertical;
+        height: 150px;
+      }
+      /* Container for time slot inputs */
+      .time-slot {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      .time-slot label {
+        font-weight: normal;
+      }
+      /* Days checklist: abbreviated day names in one row */
+      .days-checklist {
+        display: flex;
+        gap: 10px;
+        flex-wrap: nowrap;
+        margin-bottom: 15px;
+      }
+      .days-checklist label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      /* Centered submit buttons for assistance forms */
+      #assistanceSection button {
+        display: block;
+        margin: 10px auto 0;
+        padding: 10px 20px;
+        background-color: var(--accent-color);
+        color: var(--white);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+      #assistanceSection button:hover {
+        background-color: #0f5da1;
+      }
+      /* Navigation Styling: make logo text bold and navigation links normal */
+      .logo-text {
+        font-weight: bold;
+      }
+      .main-nav a {
+        font-weight: normal;
+      }
+    </style>
   </head>
   <body>
     <!-- HEADER -->
     <header>
       <div class="header-content">
-          <div class="logo">
-              <a href="index.html" class="logo-link">
-                  <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo">
-                  <span class="logo-text">SportsBook</span>
-              </a>
-          </div>
-          <nav class="main-nav">
-              <ul>
-                  <li class="dropdown">
-                      <a href="#">Sports <i class="fas fa-chevron-down"></i></a>
-                  </li>
-                  <li class="dropdown">
-                      <a href="#">Live Scoring <i class="fas fa-chevron-down"></i></a>
-                  </li>
-                  <li class="dropdown">
-                      <a href="#">Coin Toss <i class="fas fa-chevron-down"></i></a>
-                  </li>
-              </ul>
-          </nav>
-          <div class="header-right">
-              <a href="#" class="login-btn">Log in <i class="fas fa-chevron-down"></i></a>
-          </div>
+        <div class="logo">
+          <a href="index.html" class="logo-link">
+            <img
+              src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true"
+              alt="SportsBook Logo"
+            />
+            <span class="logo-text">SportsBook</span>
+          </a>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li class="dropdown">
+              <a href="#">Sports <i class="fas fa-chevron-down"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="live_scoring.html">Live Scoring <i class="fas fa-chevron-down"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="cointoss.html">Coin Toss <i class="fas fa-chevron-down"></i></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <a href="#" class="login-btn">Log in <i class="fas fa-chevron-down"></i></a>
+        </div>
       </div>
-  </header>
-  
+    </header>
     
     <!-- MAIN CONTENT -->
     <div class="main-container">
-      <!-- TABS -->
+      <!-- TABS: MATCHMAKING, TEAM-MAKING, ASSISTANCE -->
       <div class="tabs">
-        <button class="tab-button active" data-tab="matchmaking"><b>MATCHMAKING</b></button>
-        <button class="tab-button" data-tab="teammaking"><b>TEAM-MAKING</b></button>
+        <button class="tab-button active" data-tab="matchmaking">MATCHMAKING</button>
+        <button class="tab-button" data-tab="teammaking">TEAM-MAKING</button>
+        <button class="tab-button" data-tab="assistance">ASSISTANCE</button>
       </div>
-  
-      <!-- MATCHMAKING SECTION -->
-      <div id="matchmakingSection">
+      
+      <!-- MATCHMAKING SECTION (Original Player Search) -->
+      <div id="matchmakingSection" class="section" style="display: block;">
         <div class="search-container">
           <input type="text" id="searchInput" placeholder="Search players by Name" />
           <div class="filters">
@@ -65,13 +160,16 @@
               <option value="beginner">Beginner</option>
               <option value="intermediate">Intermediate</option>
               <option value="advanced">Advanced</option>
+              <option value="expert">Expert</option>
             </select>
           </div>
         </div>
+        <section class="results" id="resultsContainer"></section>
+        <div class="pagination" id="paginationContainer"></div>
       </div>
-  
-      <!-- TEAM MAKING FORM SECTION -->
-      <div id="teamMakingSection">
+      
+      <!-- TEAM MAKING SECTION (Original Functionality) -->
+      <div id="teamMakingSection" class="section" style="display: none;">
         <form class="team-making-form" id="teamForm">
           <select id="teamSport">
             <option value="">Select Sport</option>
@@ -85,8 +183,10 @@
           </select>
           <button type="button" id="loadEligiblePlayers">Show Eligible Players</button>
         </form>
-        <!-- INVITE FORM -->
-        <div class="invite-form" id="inviteForm">
+        <!-- Container for Eligible Player Cards -->
+        <div id="teamPlayersContainer" class="results" style="margin: 20px auto;"></div>
+        <!-- Invite Form (displayed after eligible players load) -->
+        <div class="invite-form" id="inviteForm" style="display: none;">
           <p id="eligibleCount"></p>
           <input type="text" id="venueInput" placeholder="Venue" />
           <div class="date-time-group">
@@ -96,22 +196,81 @@
           <button type="button" id="sendInvites"><b>Send Invites</b></button>
         </div>
       </div>
-  
-      <!-- RESULTS SECTION -->
-      <section class="results" id="resultsContainer"></section>
-  
-      <!-- PAGINATION CONTROLS -->
-      <div class="pagination" id="paginationContainer"></div>
-  
-      <!-- TEAM MAKING SECTION (Alternate Invite Button) -->
-      <div class="team-container" id="teamContainer">
-        <h3>Invite All Eligible Players</h3>
-        <div class="team-settings">
-          <button id="sendInvitesAlt">Send Invites</button>
+      
+      <!-- ASSISTANCE & MENTORSHIP SECTION (New Feature) -->
+      <div id="assistanceSection" class="section" style="display: none;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Assistance & Mentor Application</h2>
+        <!-- Assistance Type Selector -->
+        <div class="assistance-form">
+          <label for="assistType">Select Assistance Option:</label>
+          <select id="assistType" onchange="toggleAssistanceForm()">
+            <option value="">Select Option</option>
+            <option value="mentor">Apply as Mentor</option>
+            <option value="assistance">Request Coaching Assistance</option>
+          </select>
+        </div>
+        <!-- Mentor Application Form -->
+        <div id="mentorForm" class="mentor-form" style="display: none;">
+          <label for="mentorSport">Which sport are you interested in mentoring?</label>
+          <select id="mentorSport">
+            <option value="">Select Sport</option>
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+            <option value="volleyball">Volleyball</option>
+            <option value="cricket">Cricket</option>
+            <option value="table tennis">Table Tennis</option>
+            <option value="lawn tennis">Lawn Tennis</option>
+            <option value="badminton">Badminton</option>
+          </select>
+          <label for="mentorExperience">Briefly describe your coaching/playing experience:</label>
+          <textarea id="mentorExperience" placeholder="Your experience details"></textarea>
+          <button type="button" id="applyMentor" onclick="submitMentorApplication()">Submit Mentor Application</button>
+        </div>
+        <!-- Coaching Assistance Request Form -->
+        <div id="assistForm" class="assistance-form" style="display: none;">
+          <label for="assistSport">Which sport do you need help in?</label>
+          <select id="assistSport">
+            <option value="">Select Sport</option>
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+            <option value="volleyball">Volleyball</option>
+            <option value="cricket">Cricket</option>
+            <option value="table tennis">Table Tennis</option>
+            <option value="lawn tennis">Lawn Tennis</option>
+            <option value="badminton">Badminton</option>
+          </select>
+          <label for="assistSkill">What is your current skill level?</label>
+          <select id="assistSkill">
+            <option value="">Select Level</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="expert">Expert</option>
+          </select>
+          <label>What is your available time slot?</label>
+          <div class="time-slot">
+            <label for="assistTimeFrom">From:</label>
+            <input type="time" id="assistTimeFrom" />
+            <label for="assistTimeTo">To:</label>
+            <input type="time" id="assistTimeTo" />
+          </div>
+          <label>Which days are you available? (Abbreviated)</label>
+          <div class="days-checklist">
+            <label><input type="checkbox" value="Mon" /> Mon</label>
+            <label><input type="checkbox" value="Tue" /> Tue</label>
+            <label><input type="checkbox" value="Wed" /> Wed</label>
+            <label><input type="checkbox" value="Thu" /> Thu</label>
+            <label><input type="checkbox" value="Fri" /> Fri</label>
+            <label><input type="checkbox" value="Sat" /> Sat</label>
+            <label><input type="checkbox" value="Sun" /> Sun</label>
+          </div>
+          <label for="assistDescription">Describe your problem in detail:</label>
+          <textarea id="assistDescription" placeholder="Provide details about the assistance you need"></textarea>
+          <button type="button" id="submitAssistance" onclick="submitAssistance()">Submit Assistance Request</button>
         </div>
       </div>
     </div>
-  
+    
     <!-- FOOTER -->
     <footer>
       <div class="footer-container">
@@ -156,223 +315,309 @@
         © 2025 SportsBook. All rights reserved.
       </div>
     </footer>
-  
+    
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Sample players data (50 players)
-        const players = [
-          { id: 1, name: "Alice", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 2, name: "Bob", sport: "basketball", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 3, name: "Charlie", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 4, name: "Diana", sport: "football", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 5, name: "Ethan", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 6, name: "Fiona", sport: "volleyball", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 7, name: "George", sport: "football", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 8, name: "Hannah", sport: "basketball", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 9, name: "Ivan", sport: "volleyball", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 10, name: "Julia", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 11, name: "Kevin", sport: "basketball", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 12, name: "Laura", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 13, name: "Mike", sport: "football", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 14, name: "Nina", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 15, name: "Oscar", sport: "volleyball", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 16, name: "Paul", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 17, name: "Quincy", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 18, name: "Rita", sport: "cricket", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 19, name: "Sam", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 20, name: "Tina", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 21, name: "Uma", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 22, name: "Victor", sport: "table tennis", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 23, name: "Wendy", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 24, name: "Xander", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 25, name: "Yara", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 26, name: "Zack", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 27, name: "Amber", sport: "lawn tennis", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 28, name: "Brian", sport: "lawn tennis", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 29, name: "Cara", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 30, name: "Derek", sport: "lawn tennis", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 31, name: "Eva", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 32, name: "Frank", sport: "badminton", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 33, name: "Grace", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 34, name: "Henry", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 35, name: "Isla", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 36, name: "Jack", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 37, name: "Kara", sport: "basketball", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 38, name: "Liam", sport: "volleyball", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 39, name: "Mia", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 40, name: "Noah", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 41, name: "Olivia", sport: "lawn tennis", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 42, name: "Peter", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 43, name: "Quinn", sport: "football", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 44, name: "Rose", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 45, name: "Steve", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
-          { id: 46, name: "Tara", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 47, name: "Umar", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 48, name: "Vera", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
-          { id: 49, name: "Will", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
-          { id: 50, name: "Xena", sport: "badminton", skill: "beginner", image: "def_avatar.jpg" }
-        ];
-      
-        // For 7 columns and 5 rows per page, show 35 players per page.
-        let playersPerPage = 35;
-        let currentPlayers = [];
-        let activeTab = "matchmaking";
-      
-        // Utility: Capitalize first letter of each word
-        function capitalize(str) {
-          return str.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-        }
-      
-        // Pagination variables
-        let currentPage = 1;
-        let totalPages = 1;
-      
-        // Function to filter and display players (Matchmaking)
-        function displayPlayers() {
-          const searchQuery = document.getElementById("searchInput").value.toLowerCase();
-          const sportFilter = document.getElementById("sportFilter").value;
-          const skillFilter = document.getElementById("skillFilter").value;
-      
-          currentPlayers = players.filter((player) => {
-            const matchesName = player.name.toLowerCase().includes(searchQuery);
-            const matchesSport = sportFilter ? capitalize(player.sport) === capitalize(sportFilter) : true;
-            const matchesSkill = skillFilter ? capitalize(player.skill) === capitalize(skillFilter) : true;
-            return matchesName && matchesSport && matchesSkill;
-          });
-      
-          // Reset pagination for matchmaking
-          currentPage = 1;
-          totalPages = Math.ceil(currentPlayers.length / playersPerPage);
-          renderPlayers();
-          renderPagination();
-        }
-      
-        // Render players for current page
-        function renderPlayers() {
-          const resultsContainer = document.getElementById("resultsContainer");
-          resultsContainer.innerHTML = "";
-      
-          const startIndex = (currentPage - 1) * playersPerPage;
-          const slicedPlayers = currentPlayers.slice(startIndex, startIndex + playersPerPage);
-      
-          slicedPlayers.forEach((player) => {
-            const card = document.createElement("div");
-            card.className = "player-card";
-            card.innerHTML = `
-              <img src="${player.image}" alt="${player.name}" />
-              <h3>${player.name}</h3>
-              <p>Sport: ${capitalize(player.sport)}</p>
-              <p>Skill: ${capitalize(player.skill)}</p>
-            `;
-            if (activeTab === "matchmaking") {
-              card.addEventListener("click", () => {
-                alert("Clicked on " + player.name + " for more details or actions!");
-              });
-            }
-            resultsContainer.appendChild(card);
-          });
-        }
-      
-        // Render pagination controls (Previous, current page info, Next)
-        function renderPagination() {
-          const paginationContainer = document.getElementById("paginationContainer");
-          paginationContainer.innerHTML = "";
-      
-          const prevButton = document.createElement("button");
-          prevButton.textContent = "Previous";
-          prevButton.disabled = currentPage === 1;
-          prevButton.addEventListener("click", () => {
-            if (currentPage > 1) {
-              currentPage--;
-              renderPlayers();
-              renderPagination();
-            }
-          });
-          paginationContainer.appendChild(prevButton);
-      
-          const pageInfo = document.createElement("span");
-          pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-          paginationContainer.appendChild(pageInfo);
-      
-          const nextButton = document.createElement("button");
-          nextButton.textContent = "Next";
-          nextButton.disabled = currentPage === totalPages;
-          nextButton.addEventListener("click", () => {
-            if (currentPage < totalPages) {
-              currentPage++;
-              renderPlayers();
-              renderPagination();
-            }
-          });
-          paginationContainer.appendChild(nextButton);
-        }
-      
-        // Team Making: Load eligible players based on sport in the team-making form
-        document.getElementById("loadEligiblePlayers").addEventListener("click", function () {
-          const teamSport = document.getElementById("teamSport").value;
-          if (!teamSport) {
-            alert("Please select a sport.");
-            return;
+      // TAB SWITCHING
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+          document.getElementById('matchmakingSection').style.display = 'none';
+          document.getElementById('teamMakingSection').style.display = 'none';
+          document.getElementById('assistanceSection').style.display = 'none';
+          button.classList.add('active');
+          let selectedTab = button.getAttribute('data-tab');
+          if (selectedTab === "matchmaking") {
+            document.getElementById("matchmakingSection").style.display = "block";
+            activeTab = "matchmaking";
+            displayPlayers();
+          } else if (selectedTab === "teammaking") {
+            document.getElementById("teamMakingSection").style.display = "block";
+            activeTab = "teammaking";
+            // Clear previous team making results if any
+            document.getElementById("teamPlayersContainer").innerHTML = "";
+            document.getElementById("inviteForm").style.display = "none";
+          } else if (selectedTab === "assistance") {
+            document.getElementById("assistanceSection").style.display = "block";
           }
-          currentPlayers = players.filter(
-            (player) => capitalize(player.sport) === capitalize(teamSport)
-          );
-          currentPage = 1;
-          totalPages = Math.ceil(currentPlayers.length / playersPerPage);
-          renderPlayers();
-          renderPagination();
-      
-          // Show the invite form and display eligible count
-          document.getElementById("inviteForm").style.display = "block";
-          document.getElementById("eligibleCount").textContent = `Eligible Players: ${currentPlayers.length}`;
         });
-      
-        // Send Invites: Invite all eligible players (Team Making)
-        document.getElementById("sendInvites").addEventListener("click", function () {
-          if (currentPlayers.length === 0) {
-            alert("No eligible players found!");
-            return;
-          }
-          const teamSize = document.getElementById("teamSizeInput") ? document.getElementById("teamSizeInput").value : "";
-          const venue = document.getElementById("venueInput").value;
-          const matchTime = document.getElementById("dateInput").value + " " + document.getElementById("timeInput").value;
-          if (!venue || !matchTime.trim()) {
-            alert("Fill in all details!");
-            return;
-          }
-          alert(`Invites sent to ${currentPlayers.length} players for a match at ${venue} on ${matchTime}.`);
-        });
-      
-        // Tab Switching: Default is Matchmaking
-        const tabButtons = document.querySelectorAll(".tab-button");
-        tabButtons.forEach((button) => {
-          button.addEventListener("click", () => {
-            tabButtons.forEach((btn) => btn.classList.remove("active"));
-            button.classList.add("active");
-            activeTab = button.getAttribute("data-tab");
-            if (activeTab === "matchmaking") {
-              document.getElementById("matchmakingSection").style.display = "block";
-              document.getElementById("teamMakingSection").style.display = "none";
-              document.getElementById("inviteForm").style.display = "none";
-              displayPlayers();
-            } else {
-              document.getElementById("matchmakingSection").style.display = "none";
-              document.getElementById("teamMakingSection").style.display = "block";
-              document.getElementById("resultsContainer").innerHTML = "";
-              document.getElementById("paginationContainer").innerHTML = "";
-              document.getElementById("inviteForm").style.display = "none";
-            }
-          });
-        });
-      
-        document.getElementById("searchInput").addEventListener("input", displayPlayers);
-        document.getElementById("sportFilter").addEventListener("change", displayPlayers);
-        document.getElementById("skillFilter").addEventListener("change", displayPlayers);
-      
-        // Initial display in matchmaking mode
-        displayPlayers();
       });
+      
+      // Toggle Assistance Form based on dropdown selection
+      function toggleAssistanceForm() {
+        const option = document.getElementById("assistType").value;
+        document.getElementById("mentorForm").style.display = "none";
+        document.getElementById("assistForm").style.display = "none";
+        if (option === "mentor") {
+          document.getElementById("mentorForm").style.display = "block";
+        } else if (option === "assistance") {
+          document.getElementById("assistForm").style.display = "block";
+        }
+      }
+      
+      // Mentor Application Submission
+      function submitMentorApplication() {
+        const sport = document.getElementById("mentorSport").value;
+        const experience = document.getElementById("mentorExperience").value;
+        if (!sport || !experience) {
+          alert("Please fill out all fields in the mentor application.");
+          return;
+        }
+        alert("Mentor Application Submitted for " + sport + ".");
+      }
+      
+      // Assistance Request Submission
+      function submitAssistance() {
+        const sport = document.getElementById("assistSport").value;
+        const skill = document.getElementById("assistSkill").value;
+        const timeFrom = document.getElementById("assistTimeFrom").value;
+        const timeTo = document.getElementById("assistTimeTo").value;
+        const days = Array.from(document.querySelectorAll('.days-checklist input[type="checkbox"]:checked')).map(chk => chk.value);
+        const description = document.getElementById("assistDescription").value;
+        if (!sport || !skill || !timeFrom || !timeTo || days.length === 0 || !description) {
+          alert("Please fill out all fields in the assistance request form.");
+          return;
+        }
+        alert(
+          "Assistance Request Submitted:\nSport: " +
+            sport +
+            "\nSkill: " +
+            skill +
+            "\nTime Slot: " +
+            timeFrom +
+            " - " +
+            timeTo +
+            "\nDays: " +
+            days.join(", ") +
+            "\nDescription: " +
+            description
+        );
+      }
+      
+      // MATCHMAKING: Sample Player Data (50 players) and Pagination
+      const players = [
+        { id: 1, name: "Alice", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 2, name: "Bob", sport: "basketball", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 3, name: "Charlie", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 4, name: "Diana", sport: "football", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 5, name: "Ethan", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 6, name: "Fiona", sport: "volleyball", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 7, name: "George", sport: "football", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 8, name: "Hannah", sport: "basketball", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 9, name: "Ivan", sport: "volleyball", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 10, name: "Julia", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 11, name: "Kevin", sport: "basketball", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 12, name: "Laura", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 13, name: "Mike", sport: "football", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 14, name: "Nina", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 15, name: "Oscar", sport: "volleyball", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 16, name: "Paul", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 17, name: "Quincy", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 18, name: "Rita", sport: "cricket", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 19, name: "Sam", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 20, name: "Tina", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 21, name: "Uma", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 22, name: "Victor", sport: "table tennis", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 23, name: "Wendy", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 24, name: "Xander", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 25, name: "Yara", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 26, name: "Zack", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 27, name: "Amber", sport: "lawn tennis", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 28, name: "Brian", sport: "lawn tennis", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 29, name: "Cara", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 30, name: "Derek", sport: "lawn tennis", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 31, name: "Eva", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 32, name: "Frank", sport: "badminton", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 33, name: "Grace", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 34, name: "Henry", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 35, name: "Isla", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 36, name: "Jack", sport: "football", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 37, name: "Kara", sport: "basketball", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 38, name: "Liam", sport: "volleyball", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 39, name: "Mia", sport: "cricket", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 40, name: "Noah", sport: "table tennis", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 41, name: "Olivia", sport: "lawn tennis", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 42, name: "Peter", sport: "badminton", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 43, name: "Quinn", sport: "football", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 44, name: "Rose", sport: "basketball", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 45, name: "Steve", sport: "volleyball", skill: "beginner", image: "def_avatar.jpg" },
+        { id: 46, name: "Tara", sport: "cricket", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 47, name: "Umar", sport: "table tennis", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 48, name: "Vera", sport: "lawn tennis", skill: "advanced", image: "def_avatar.jpg" },
+        { id: 49, name: "Will", sport: "badminton", skill: "intermediate", image: "def_avatar.jpg" },
+        { id: 50, name: "Xena", sport: "badminton", skill: "beginner", image: "def_avatar.jpg" }
+      ];
+      
+      // For MATCHMAKING: 35 players per page (7 columns x 5 rows)
+      let playersPerPage = 35;
+      let currentPlayers = [];
+      let activeTab = "matchmaking";
+      
+      // Utility: Capitalize first letter of each word
+      function capitalize(str) {
+        return str.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+      }
+      
+      // Pagination variables
+      let currentPage = 1;
+      let totalPages = 1;
+      
+      // Function to filter and display players (Matchmaking)
+      function displayPlayers() {
+        const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+        const sportFilter = document.getElementById("sportFilter").value;
+        const skillFilter = document.getElementById("skillFilter").value;
+        
+        currentPlayers = players.filter(player => {
+          const matchesName = player.name.toLowerCase().includes(searchQuery);
+          const matchesSport = sportFilter ? capitalize(player.sport) === capitalize(sportFilter) : true;
+          const matchesSkill = skillFilter ? capitalize(player.skill) === capitalize(skillFilter) : true;
+          return matchesName && matchesSport && matchesSkill;
+        });
+        
+        currentPage = 1;
+        totalPages = Math.ceil(currentPlayers.length / playersPerPage);
+        renderPlayers();
+        renderPagination();
+      }
+      
+      // Render players for current page (Matchmaking)
+      function renderPlayers() {
+        const resultsContainer = document.getElementById("resultsContainer");
+        resultsContainer.innerHTML = "";
+        
+        const startIndex = (currentPage - 1) * playersPerPage;
+        const slicedPlayers = currentPlayers.slice(startIndex, startIndex + playersPerPage);
+        
+        slicedPlayers.forEach(player => {
+          const card = document.createElement("div");
+          card.className = "player-card";
+          card.innerHTML = `
+            <img src="${player.image}" alt="${player.name}" />
+            <h3>${player.name}</h3>
+            <p>Sport: ${capitalize(player.sport)}</p>
+            <p>Skill: ${capitalize(player.skill)}</p>
+          `;
+          if(activeTab === "matchmaking") {
+            card.addEventListener("click", () => {
+              alert("Clicked on " + player.name + " for more details or actions!");
+            });
+          }
+          resultsContainer.appendChild(card);
+        });
+      }
+      
+      // Render pagination controls (Matchmaking)
+      function renderPagination() {
+        const paginationContainer = document.getElementById("paginationContainer");
+        paginationContainer.innerHTML = "";
+        
+        const prevButton = document.createElement("button");
+        prevButton.textContent = "Previous";
+        prevButton.disabled = currentPage === 1;
+        prevButton.addEventListener("click", () => {
+          if(currentPage > 1) {
+            currentPage--;
+            renderPlayers();
+            renderPagination();
+          }
+        });
+        paginationContainer.appendChild(prevButton);
+        
+        const pageInfo = document.createElement("span");
+        pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        paginationContainer.appendChild(pageInfo);
+        
+        const nextButton = document.createElement("button");
+        nextButton.textContent = "Next";
+        nextButton.disabled = currentPage === totalPages;
+        nextButton.addEventListener("click", () => {
+          if(currentPage < totalPages) {
+            currentPage++;
+            renderPlayers();
+            renderPagination();
+          }
+        });
+        paginationContainer.appendChild(nextButton);
+      }
+      
+      // TEAM MAKING: Render eligible player cards into team making section
+      function renderTeamPlayers() {
+        const container = document.getElementById("teamPlayersContainer");
+        container.innerHTML = "";
+        currentPlayers.forEach(player => {
+          const card = document.createElement("div");
+          card.className = "player-card";
+          card.innerHTML = `
+            <img src="${player.image}" alt="${player.name}" />
+            <h3>${player.name}</h3>
+            <p>Sport: ${capitalize(player.sport)}</p>
+            <p>Skill: ${capitalize(player.skill)}</p>
+          `;
+          container.appendChild(card);
+        });
+      }
+      
+      // TEAM MAKING: Load eligible players based on selected sport
+      document.getElementById("loadEligiblePlayers").addEventListener("click", function () {
+        const teamSport = document.getElementById("teamSport").value;
+        if (!teamSport) {
+          alert("Please select a sport.");
+          return;
+        }
+        currentPlayers = players.filter(player => capitalize(player.sport) === capitalize(teamSport));
+        // Show invite form and update eligible count
+        document.getElementById("inviteForm").style.display = "block";
+        document.getElementById("eligibleCount").textContent = `Eligible Players: ${currentPlayers.length}`;
+        // Render eligible player cards in TEAM MAKING section
+        renderTeamPlayers();
+      });
+      
+      // TEAM MAKING: Send Invites
+      document.getElementById("sendInvites").addEventListener("click", function () {
+        if (currentPlayers.length === 0) {
+          alert("No eligible players found!");
+          return;
+        }
+        const venue = document.getElementById("venueInput").value;
+        const matchTime = document.getElementById("dateInput").value + " " + document.getElementById("timeInput").value;
+        if (!venue || !matchTime.trim()) {
+          alert("Fill in all details!");
+          return;
+        }
+        alert(`Invites sent to ${currentPlayers.length} players for a match at ${venue} on ${matchTime}.`);
+      });
+      
+      // TAB SWITCHING
+      document.querySelectorAll(".tab-button").forEach(button => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll(".tab-button").forEach(btn => btn.classList.remove("active"));
+          document.getElementById("matchmakingSection").style.display = "none";
+          document.getElementById("teamMakingSection").style.display = "none";
+          document.getElementById("assistanceSection").style.display = "none";
+          button.classList.add("active");
+          let selectedTab = button.getAttribute("data-tab");
+          if(selectedTab === "matchmaking") {
+            document.getElementById("matchmakingSection").style.display = "block";
+            activeTab = "matchmaking";
+            displayPlayers();
+          } else if(selectedTab === "teammaking") {
+            document.getElementById("teamMakingSection").style.display = "block";
+            activeTab = "teammaking";
+            // Clear previous team making results if any
+            document.getElementById("teamPlayersContainer").innerHTML = "";
+            document.getElementById("inviteForm").style.display = "none";
+          } else if(selectedTab === "assistance") {
+            document.getElementById("assistanceSection").style.display = "block";
+          }
+        });
+      });
+      
+      document.getElementById("searchInput").addEventListener("input", displayPlayers);
+      document.getElementById("sportFilter").addEventListener("change", displayPlayers);
+      document.getElementById("skillFilter").addEventListener("change", displayPlayers);
+      
+      // INITIAL DISPLAY in MATCHMAKING on page load
+      displayPlayers();
     </script>
   </body>
 </html>
-
