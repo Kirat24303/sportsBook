@@ -2247,3 +2247,201 @@ footer {
   }
 }
 
+/* Additional styles for after_scan.html */
+
+/* Player Details Section */
+.player-details-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.profile-card {
+    background-color: var(--playercard-bg);
+    border: 1px solid var(--playercard-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-header h2 {
+    color: var(--white);
+    margin: 0;
+}
+
+.profile-status {
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.profile-info {
+    display: grid;
+    gap: 15px;
+}
+
+.info-group {
+    display: flex;
+    align-items: center;
+}
+
+.info-group label {
+    width: 120px;
+    color: var(--light-grey);
+    font-weight: 500;
+}
+
+.info-group span {
+    color: var(--white);
+}
+
+/* Booking Form */
+.booking-form {
+    background-color: var(--playercard-bg);
+    border: 1px solid var(--playercard-border);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: var(--white);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.number-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.number-input button {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.number-input button:hover {
+    background-color: #0f5da1;
+}
+
+.number-input input {
+    width: 60px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid var(--playercard-border);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--white);
+    font-size: 16px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--playercard-border);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--white);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+select option {
+    background-color: var(--bg-color);
+    color: var(--white);
+}
+
+/* Equipment Section */
+.equipment-section {
+    margin-top: 30px;
+}
+
+.equipment-section h3 {
+    color: var(--white);
+    margin-bottom: 15px;
+}
+
+.equipment-list {
+    display: grid;
+    gap: 15px;
+}
+
+.equipment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--bg-color);
+    border-radius: 4px;
+}
+
+.equipment-name {
+    color: var(--white);
+    font-weight: 500;
+}
+
+/* Submit Button */
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+}
+
+.submit-btn:hover {
+    background-color: #0f5da1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .player-details-section {
+        padding: 10px;
+    }
+
+    .info-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info-group label {
+        margin-bottom: 5px;
+    }
+
+    .equipment-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
