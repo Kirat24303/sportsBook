@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SportsBook - Smart Booking System</title>
+    <!-- Link to the common styles.css -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- FontAwesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Additional inline styles for the Smart Booking page */
+      .booking-heading {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .booking-form-section label {
+        font-size: 1rem;
+        color: var(--white);
+      }
+      .time-slot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+      .time-slot input[type="time"] {
+        width: 45%;
+        padding: 10px;
+        border: 1px solid var(--accent-color);
+        border-radius: 4px;
+        background-color: var(--input-bg);
+        color: var(--input-text);
+      }
+      .time-slot span {
+        color: var(--light-grey);
+        font-size: 1rem;
+      }
+      /* Hide the available slots section by default */
+      #availabilitySection {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER (identical to index.html) -->
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <a href="index.html" class="logo-link">
+            <img
+              src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true"
+              alt="SportsBook Logo"
+            />
+            <span class="logo-text">SportsBook</span>
+          </a>
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li class="dropdown">
+              <a href="#">Sports <i class="fas fa-chevron-down"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="live_scoring.html">Live Scoring <i class="fas fa-chevron-down"></i></a>
+            </li>
+            <li class="dropdown">
+              <a href="cointoss.html">Coin Toss <i class="fas fa-chevron-down"></i></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <a href="#" class="login-btn">Log In <i class="fas fa-chevron-down"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <!-- Intro/Heading Section -->
+      <section class="qr-player-section">
+        <div class="container">
+          <div class="qr-player-content" style="flex-direction: column; gap: 10px;">
+            <h1 class="booking-heading">
+              Smart Booking System
+            </h1>
+            <p style="text-align: center; color: var(--light-grey); max-width: 600px; margin: 0 auto;">
+              Easily reserve courts or fields for sports like Tennis, Basketball, Volleyball,
+              Cricket, Table Tennis, Lawn Tennis, and Badminton.
+              Select your preferred date and time slot to see available options and book instantly.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Booking Form Section -->
+      <section class="cards-section" style="padding-top: 30px;">
+        <div class="container">
+          <div class="booking-form-section" style="text-align: center;">
+            <h2 style="color: var(--accent-color); margin-bottom: 15px;">
+              Book Your Court/Field
+            </h2>
+            <form id="bookingForm" style="max-width: 500px; margin: 0 auto;">
+              <!-- Sport Selection -->
+              <label for="sportSelect" style="display: block; margin-bottom: 5px;">
+                Choose Sport:
+              </label>
+              <select
+                id="sportSelect"
+                style="width: 100%; margin-bottom: 15px; padding: 10px;"
+              >
+                <option value="">Select Sport</option>
+                <option value="tennis">Tennis</option>
+                <option value="basketball">Basketball</option>
+                <option value="volleyball">Volleyball</option>
+                <option value="cricket">Cricket</option>
+                <option value="table tennis">Table Tennis</option>
+                <option value="lawn tennis">Lawn Tennis</option>
+                <option value="badminton">Badminton</option>
+              </select>
+
+              <!-- Date Selection -->
+              <label for="bookingDate" style="display: block; margin-bottom: 5px;">
+                Select Date:
+              </label>
+              <input
+                type="date"
+                id="bookingDate"
+                style="width: 100%; margin-bottom: 15px; padding: 10px;"
+              />
+
+              <!-- Time Slot Selection with "to" label between inputs -->
+              <label style="display: block; margin-bottom: 5px;">
+                Select Time Slot:
+              </label>
+              <div class="time-slot">
+                <input type="time" id="bookingTimeFrom" />
+                <span>to</span>
+                <input type="time" id="bookingTimeTo" />
+              </div>
+
+              <!-- Submit Button -->
+              <button
+                type="button"
+                onclick="searchAvailability()"
+                style="padding: 12px 24px; background-color: var(--accent-color); color: var(--bg-color); border: none; border-radius: 4px; cursor: pointer; font-weight: 600;"
+              >
+                Check Availability
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Available Slots Section (initially hidden) -->
+      <section id="availabilitySection" class="cards-section" style="padding-top: 30px;">
+        <div class="container">
+          <h2 style="color: var(--accent-color); text-align: center; margin-bottom: 20px;">
+            Available Slots
+          </h2>
+          <div
+            id="availabilityResults"
+            class="cards-grid"
+            style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));"
+          >
+            <!-- Booking cards will be dynamically loaded here -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER (identical to index.html) -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="#">Scan</a></li>
+              <li><a href="#">Sports</a></li>
+              <li><a href="#">Leaderboard</a></li>
+              <li><a href="live_scoring.html">Live Scoring</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Features</h4>
+            <ul>
+              <li><a href="occupancy.html">Occupancy</a></li>
+              <li><a href="playersearch.html">Player Search</a></li>
+              <li><a href="smart_booking.html">Booking</a></li>
+              <li><a href="others.html">Others</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Tutorials</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; developed by kirat, priyansh and avnish</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/kirat.g09/?utm_source=qr"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript: Display available slots after clicking Check Availability -->
+    <script>
+      function searchAvailability() {
+        // Grab form values
+        const sport = document.getElementById('sportSelect').value;
+        const date = document.getElementById('bookingDate').value;
+        const timeFrom = document.getElementById('bookingTimeFrom').value;
+        const timeTo = document.getElementById('bookingTimeTo').value;
+
+        // Basic validation
+        if (!sport || !date || !timeFrom || !timeTo) {
+          alert('Please fill out all fields to check availability.');
+          return;
+        }
+
+        // Clear previous results
+        const availabilityContainer = document.getElementById('availabilityResults');
+        availabilityContainer.innerHTML = '';
+
+        // Create sample slot results with "to" between times
+        const sampleSlots = [
+          {
+            courtName: `${sport.charAt(0).toUpperCase() + sport.slice(1)} Court #1`,
+            slotTime: `${timeFrom} to ${timeTo}`,
+            imageUrl: 'https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true'
+          },
+          {
+            courtName: `${sport.charAt(0).toUpperCase() + sport.slice(1)} Court #2`,
+            slotTime: `${timeFrom} to ${timeTo}`,
+            imageUrl: 'https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true'
+          }
+        ];
+
+        sampleSlots.forEach((slot) => {
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'card';
+          cardDiv.innerHTML = `
+            <div class="card-image">
+              <img src="${slot.imageUrl}" alt="${slot.courtName}" />
+            </div>
+            <div class="card-content">
+              <h3>${slot.courtName}</h3>
+              <p>Available: ${slot.slotTime}</p>
+              <button style="margin-top: 10px; padding: 10px 20px; background-color: var(--accent-color); color: var(--bg-color); border: none; border-radius: 4px; cursor: pointer;">
+                Book Now
+              </button>
+            </div>
+          `;
+          availabilityContainer.appendChild(cardDiv);
+        });
+
+        // Make the Available Slots section visible
+        document.getElementById('availabilitySection').style.display = 'block';
+      }
+    </script>
+  </body>
+</html>
