@@ -2119,3 +2119,131 @@ footer {
 .back-btn:hover {
   background-color: #0f5da1;
 }
+
+/* -------------------------- TIMER ------------------------------------------ */
+
+/* QR Code and Timer Section Styling */
+.qr-player-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 30px 0;
+}
+
+.qr-code {
+  text-align: center;
+}
+
+.qr-code img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+.qr-code p {
+  color: var(--light-grey);
+  font-size: 14px;
+}
+
+.booking-timer {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px;
+  background-color: var(--playercard-bg); /* #333333 from your CSS */
+  border-radius: 8px;
+  border: 1px solid var(--playercard-border); /* #444444 from your CSS */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.timer-container {
+  text-align: center;
+  min-width: 180px;
+}
+
+.timer-container h3 {
+  margin-bottom: 10px;
+  color: var(--accent-color); /* #0782da from your CSS */
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.timer {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--white); /* #ffffff from your CSS */
+  font-family: monospace;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--bg-color); /* #1a1a1a from your CSS */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 5px;
+}
+
+.booking-info {
+  border-left: 1px solid var(--playercard-border); /* #444444 from your CSS */
+  padding-left: 20px;
+}
+
+.booking-info h4 {
+  margin-bottom: 15px;
+  color: var(--accent-color); /* #0782da from your CSS */
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.booking-info p {
+  margin: 10px 0;
+  color: var(--light-grey); /* #cccccc from your CSS */
+  font-size: 14px;
+}
+
+.booking-info p strong {
+  color: var(--white); /* #ffffff from your CSS */
+}
+
+/* Timer states */
+.timer.warning {
+  color: #ffc107; /* Yellow warning color */
+  animation: pulse 1s infinite;
+}
+
+.timer.expired {
+  color: #dc3545; /* Red expired color */
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .qr-player-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .booking-timer {
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .booking-info {
+    border-left: none;
+    border-top: 1px solid var(--playercard-border);
+    padding-left: 0;
+    padding-top: 15px;
+  }
+}
+
