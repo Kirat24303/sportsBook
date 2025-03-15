@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Details - IIITD Sports</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/" class="logo-link">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-03-15%20215757-FSHQcz4O3EuveIaSUycjWrsBaUG2Sg.png" alt="IIITD Logo" class="logo-img">
+                        <span class="logo-text">SportsBook</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#">Sports <i class="fas fa-chevron-down"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="live_scoring.html">Live Scoring <i class="fas fa-chevron-down"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="cointoss.html">Coin Toss <i class="fas fa-chevron-down"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Player Details Section -->
+        <section class="player-details-section">
+            <div class="profile-card">
+                <div class="profile-header">
+                    <h2>Player Details</h2>
+                    <span class="profile-status">Verified</span>
+                </div>
+                <div class="profile-info">
+                    <div class="info-group">
+                        <label>Name:</label>
+                        <span id="playerName">John Doe</span>
+                    </div>
+                    <div class="info-group">
+                        <label>Email:</label>
+                        <span id="playerEmail">john.doe@iiitd.ac.in</span>
+                    </div>
+                    <div class="info-group">
+                        <label>Roll Number:</label>
+                        <span id="playerRoll">2021XXX</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <form id="bookingForm" class="booking-form">
+                <div class="form-group">
+                    <label for="playerCount">Number of Players:</label>
+                    <div class="number-input">
+                        <button type="button" onclick="decrementValue('playerCount')" class="decrement">-</button>
+                        <input type="number" id="playerCount" name="playerCount" value="1" min="1" max="10" readonly>
+                        <button type="button" onclick="incrementValue('playerCount')" class="increment">+</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="sportSelect">Select Sport:</label>
+                    <select id="sportSelect" name="sport" onchange="updateEquipment()">
+                        <option value="">Choose a sport</option>
+                        <option value="badminton">Badminton</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="cricket">Cricket</option>
+                        <option value="football">Football</option>
+                        <option value="tabletennis">Table Tennis</option>
+                        <option value="volleyball">Volleyball</option>
+                    </select>
+                </div>
+
+                <div id="equipmentSection" class="equipment-section">
+                    <h3>Equipment Required</h3>
+                    <div id="equipmentList" class="equipment-list">
+                        <!-- Equipment items will be dynamically added here -->
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#">Scan</a></li>
+                        <li><a href="#">Sports</a></li>
+                        <li><a href="#">Leaderboard</a></li>
+                        <li><a href="#">Live Scoring</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; team sportsBook. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to update equipment list based on selected sport
+        function updateEquipment() {
+            const sport = document.getElementById('sportSelect').value;
+            const equipmentList = document.getElementById('equipmentList');
+            equipmentList.innerHTML = ''; // Clear current equipment
+
+            let equipment = [];
+            switch(sport) {
+                case 'badminton':
+                    equipment = ['Racket', 'Shuttle Cock'];
+                    break;
+                case 'basketball':
+                    equipment = ['Basketball'];
+                    break;
+                case 'cricket':
+                    equipment = ['Bat', 'Ball', 'Stumps'];
+                    break;
+                case 'football':
+                    equipment = ['Football'];
+                    break;
+                case 'tabletennis':
+                    equipment = ['Paddle', 'Ball', 'Net'];
+                    break;
+                case 'volleyball':
+                    equipment = ['Volleyball', 'Net'];
+                    break;
+            }
+
+            equipment.forEach(item => {
+                const equipmentItem = document.createElement('div');
+                equipmentItem.className = 'equipment-item';
+                equipmentItem.innerHTML = `
+                    <span class="equipment-name">${item}</span>
+                    <div class="number-input">
+                        <button type="button" onclick="decrementValue('${item}')" class="decrement">-</button>
+                        <input type="number" id="${item}" name="${item}" value="1" min="0" max="5" readonly>
+                        <button type="button" onclick="incrementValue('${item}')" class="increment">+</button>
+                    </div>
+                `;
+                equipmentList.appendChild(equipmentItem);
+            });
+        }
+
+        // Functions to handle increment/decrement
+        function incrementValue(id) {
+            const input = document.getElementById(id);
+            const currentValue = parseInt(input.value);
+            if (currentValue < parseInt(input.max)) {
+                input.value = currentValue + 1;
+            }
+        }
+
+        function decrementValue(id) {
+            const input = document.getElementById(id);
+            const currentValue = parseInt(input.value);
+            if (currentValue > parseInt(input.min)) {
+                input.value = currentValue - 1;
+            }
+        }
+
+        // Form submission handler
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to your server
+            // For now, we'll just redirect to the landing page
+            window.location.href = '/';
+        });
+    </script>
+</body>
+</html>
