@@ -2,38 +2,70 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SportsBook - Live Scoring</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Live Scoring | SportsBook</title>
+    <!-- Shared CSS for overall theme -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/occupancy.css" />
+    <!-- Page-specific CSS for Live Scoring -->
+    <link rel="stylesheet" href="css/live_scoring.css" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   </head>
   <body>
-    <!-- Header -->
+    <!-- Sidebar (Collapsible) -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2 style="color:#0782da">Menu</h2>
+        <button class="sidebar-close" id="sidebarClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="menu-parent">
+            <span class="menu-title" style="color:#0782da">Platform</span>
+            <ul class="submenu">
+              <li><a href="index.html">Scan</a></li>
+              <li><a href="index.html">Sports</a></li>
+              <li><a href="#">Leaderboard</a></li>
+              <li><a href="live_scoring.html">Live Scoring</a></li>
+            </ul>
+          </li>
+          <li class="menu-parent">
+            <span class="menu-title" style="color:#0782da">Features</span>
+            <ul class="submenu">
+              <li><a href="occupancy.html">Occupancy</a></li>
+              <li><a href="playersearch.html">Player Search</a></li>
+              <li><a href="bookingsystem.html">Booking</a></li>
+              <li><a href="cointoss.html">Coin Toss</a></li>
+              <li><a href="others.html">Others</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- HEADER -->
     <header>
-      <div class="header-content">
-        <div class="logo">
+      <div class="header-content container">
+        <!-- Left: Menu Button -->
+        <div class="menu-btn" id="menuBtn">Menu</div>
+        <!-- Center: Logo & Text -->
+        <div class="header-center">
           <a href="index.html" class="logo-link">
-            <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo" />
+            <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo" class="header-logo" />
             <span class="logo-text">SportsBook</span>
           </a>
         </div>
-        <nav class="main-nav">
-          <ul>
-            <li class="dropdown"><a href="#">Sports <i class="fas fa-chevron-down"></i></a></li>
-            <li class="dropdown"><a href="#">Live Scoring <i class="fas fa-chevron-down"></i></a></li>
-            <li class="dropdown"><a href="cointoss.html">Coin Toss <i class="fas fa-chevron-down"></i></a></li>
-          </ul>
-        </nav>
+        <!-- Right: Login Button -->
         <div class="header-right">
-          <a href="#" class="login-btn">Log in <i class="fas fa-chevron-down"></i></a>
+          <a href="#" class="login-btn">Log in</a>
         </div>
       </div>
     </header>
 
-    <!-- Navigation Bar for Live vs Completed -->
+    <!-- SCORE NAVIGATION -->
     <div class="container">
       <div class="score-nav">
         <button id="liveBtn" class="score-nav-btn active" onclick="showSection('live')">Live Games</button>
@@ -41,7 +73,7 @@
       </div>
     </div>
 
-    <!-- Live Games Section -->
+    <!-- LIVE GAMES SECTION -->
     <div class="container scorecards-container active" id="liveSection">
       <div class="live-scoreboard-container">
         <h2 class="live-scoreboard-title">Live Scoring</h2>
@@ -145,8 +177,8 @@
       </div>
     </div>
 
-    <!-- Completed Games Section -->
-    <div class="container scorecards-container" id="completedSection">
+    <!-- COMPLETED GAMES SECTION -->
+    <div class="container scorecards-container" id="completedSection" style="display:none;">
       <div class="live-scoreboard-container">
         <h2 class="live-scoreboard-title">Completed Games</h2>
         <div class="scorecard-grid">
@@ -211,607 +243,94 @@
       </div>
     </div>
 
-    <!-- Modal for Detailed Scorecards (Back button only) -->
-    <div class="modal-overlay" id="detailModal">
-      <div class="modal-content">
-        <!-- Detailed Scorecard for Cricket (Live) -->
-        <div class="detailed-scorecard" id="detailCricket">
-          <div class="scorecard-detail-header">
-            <span class="sport-name">Cricket - Detailed Scorecard</span>
-            <span id="modalStatus" class="status-badge"></span>
+    <!-- (Optional) Detailed Scorecard Modal Code Goes Here -->
+    <!-- ... -->
+    
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Platform</h4>
+            <ul>
+              <li><a href="#">Scan</a></li>
+              <li><a href="#">Sports</a></li>
+              <li><a href="#">Leaderboard</a></li>
+              <li><a href="live_scoring.html">Live Scoring</a></li>
+            </ul>
           </div>
-          <div class="detail-tabs">
-            <button class="tab-btn active" onclick="switchTeam('detailCricket','TeamA')">Team A (Batting)</button>
-            <button class="tab-btn" onclick="switchTeam('detailCricket','TeamB')">Team B (Bowling)</button>
+          <div class="footer-column">
+            <h4>Features</h4>
+            <ul>
+              <li><a href="occupancy.html">Occupancy</a></li>
+              <li><a href="playersearch.html">Player Search</a></li>
+              <li><a href="bookingsystem.html">Booking</a></li>
+              <li><a href="others.html">Others</a></li>
+            </ul>
           </div>
-          <div class="team-detail active" id="detailCricketTeamA">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Runs</th>
-                  <th>Balls</th>
-                  <th>4s</th>
-                  <th>6s</th>
-                  <th>SR</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player 1</td>
-                  <td>45</td>
-                  <td>30</td>
-                  <td>5</td>
-                  <td>1</td>
-                  <td>150</td>
-                </tr>
-                <tr>
-                  <td>Player 2</td>
-                  <td>32</td>
-                  <td>28</td>
-                  <td>3</td>
-                  <td>0</td>
-                  <td>114</td>
-                </tr>
-                <tr>
-                  <td>Player 3</td>
-                  <td>43</td>
-                  <td>32</td>
-                  <td>4</td>
-                  <td>0</td>
-                  <td>134</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Innings: 1st | Over: 15.2</p>
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Tutorials</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
           </div>
-          <div class="team-detail" id="detailCricketTeamB" style="display:none;">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Bowler</th>
-                  <th>Overs</th>
-                  <th>Maidens</th>
-                  <th>Runs</th>
-                  <th>Wickets</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player P</td>
-                  <td>4</td>
-                  <td>0</td>
-                  <td>15</td>
-                  <td>3</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
           </div>
-          <button class="back-btn" onclick="closeDetail()">Back</button>
-        </div>
-        
-        <!-- Detailed Scorecard for Cricket (Completed) -->
-        <div class="detailed-scorecard" id="detailCricketCompleted">
-          <div class="scorecard-detail-header">
-            <span class="sport-name">Cricket - Detailed Scorecard (Completed)</span>
-            <span id="modalStatusCompleted" class="status-badge"></span>
-          </div>
-          <div class="detail-tabs">
-            <button class="tab-btn active" onclick="switchTeam('detailCricketCompleted','TeamA')">Team A</button>
-            <button class="tab-btn" onclick="switchTeam('detailCricketCompleted','TeamB')">Team B</button>
-          </div>
-          <div class="team-detail active" id="detailCricketCompletedTeamA">
-            <h4>Batting</h4>
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Runs</th>
-                  <th>Balls</th>
-                  <th>4s</th>
-                  <th>6s</th>
-                  <th>SR</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player 1</td>
-                  <td>45</td>
-                  <td>30</td>
-                  <td>5</td>
-                  <td>1</td>
-                  <td>150</td>
-                </tr>
-                <tr>
-                  <td>Player 2</td>
-                  <td>32</td>
-                  <td>28</td>
-                  <td>3</td>
-                  <td>0</td>
-                  <td>114</td>
-                </tr>
-                <tr>
-                  <td>Player 3</td>
-                  <td>43</td>
-                  <td>32</td>
-                  <td>4</td>
-                  <td>0</td>
-                  <td>134</td>
-                </tr>
-              </tbody>
-            </table>
-            <h4>Bowling</h4>
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Bowler</th>
-                  <th>Overs</th>
-                  <th>Maidens</th>
-                  <th>Runs</th>
-                  <th>Wickets</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player P</td>
-                  <td>4</td>
-                  <td>0</td>
-                  <td>15</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>Player X</td>
-                  <td>3</td>
-                  <td>0</td>
-                  <td>20</td>
-                  <td>2</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="team-detail" id="detailCricketCompletedTeamB" style="display:none;">
-            <h4>Batting</h4>
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Runs</th>
-                  <th>Balls</th>
-                  <th>4s</th>
-                  <th>6s</th>
-                  <th>SR</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player 4</td>
-                  <td>55</td>
-                  <td>35</td>
-                  <td>6</td>
-                  <td>1</td>
-                  <td>157</td>
-                </tr>
-              </tbody>
-            </table>
-            <h4>Bowling</h4>
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Bowler</th>
-                  <th>Overs</th>
-                  <th>Maidens</th>
-                  <th>Runs</th>
-                  <th>Wickets</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player Y</td>
-                  <td>4</td>
-                  <td>1</td>
-                  <td>18</td>
-                  <td>2</td>
-                </tr>
-                <tr>
-                  <td>Player Z</td>
-                  <td>3</td>
-                  <td>0</td>
-                  <td>22</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <button class="back-btn" onclick="closeDetail()">Back</button>
-        </div>
-        
-        <!-- Detailed Scorecard for Basketball -->
-        <div class="detailed-scorecard" id="detailBasketball">
-          <div class="scorecard-detail-header">
-            <span class="sport-name">Basketball - Detailed Scorecard</span>
-            <span id="modalStatusBasketball" class="status-badge"></span>
-          </div>
-          <div class="detail-tabs">
-            <button class="tab-btn active" onclick="switchTeam('detailBasketball','TeamA')">Team Alpha</button>
-            <button class="tab-btn" onclick="switchTeam('detailBasketball','TeamB')">Team Beta</button>
-          </div>
-          <div class="team-detail active" id="detailBasketballTeamA">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Points</th>
-                  <th>Rebounds</th>
-                  <th>Assists</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player A</td>
-                  <td>18</td>
-                  <td>5</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>Player B</td>
-                  <td>22</td>
-                  <td>7</td>
-                  <td>4</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Quarter: 3 | Time Left: 02:30</p>
-          </div>
-          <div class="team-detail" id="detailBasketballTeamB" style="display:none;">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Points</th>
-                  <th>Rebounds</th>
-                  <th>Assists</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player C</td>
-                  <td>20</td>
-                  <td>6</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>Player D</td>
-                  <td>19</td>
-                  <td>8</td>
-                  <td>4</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Quarter: 3 | Time Left: 02:30</p>
-          </div>
-          <button class="back-btn" onclick="closeDetail()">Back</button>
-        </div>
-        
-        <!-- Detailed Scorecard for Football -->
-        <div class="detailed-scorecard" id="detailFootball">
-          <div class="scorecard-detail-header">
-            <span class="sport-name">Football - Detailed Scorecard</span>
-            <span id="modalStatusFootball" class="status-badge"></span>
-          </div>
-          <div class="detail-tabs">
-            <button class="tab-btn active" onclick="switchTeam('detailFootball','TeamA')">Team Red</button>
-            <button class="tab-btn" onclick="switchTeam('detailFootball','TeamB')">Team Blue</button>
-          </div>
-          <div class="team-detail active" id="detailFootballTeamA">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Goals</th>
-                  <th>Assists</th>
-                  <th>Pass Acc.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player X</td>
-                  <td>1</td>
-                  <td>0</td>
-                  <td>85%</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Half: 1st | Time: 38:20</p>
-          </div>
-          <div class="team-detail" id="detailFootballTeamB" style="display:none;">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Goals</th>
-                  <th>Assists</th>
-                  <th>Pass Acc.</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player Y</td>
-                  <td>0</td>
-                  <td>1</td>
-                  <td>78%</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Half: 1st | Time: 38:20</p>
-          </div>
-          <button class="back-btn" onclick="closeDetail()">Back</button>
-        </div>
-        
-        <!-- Detailed Scorecard for Volleyball -->
-        <div class="detailed-scorecard" id="detailVolleyball">
-          <div class="scorecard-detail-header">
-            <span class="sport-name">Volleyball - Detailed Scorecard</span>
-            <span id="modalStatusVolleyball" class="status-badge"></span>
-          </div>
-          <div class="detail-tabs">
-            <button class="tab-btn active" onclick="switchTeam('detailVolleyball','TeamA')">Team Spike</button>
-            <button class="tab-btn" onclick="switchTeam('detailVolleyball','TeamB')">Team Block</button>
-          </div>
-          <div class="team-detail active" id="detailVolleyballTeamA">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Points</th>
-                  <th>Blocks</th>
-                  <th>Aces</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player M</td>
-                  <td>15</td>
-                  <td>2</td>
-                  <td>1</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Sets: 2-1 | Current Set: 21-18</p>
-          </div>
-          <div class="team-detail" id="detailVolleyballTeamB" style="display:none;">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Points</th>
-                  <th>Blocks</th>
-                  <th>Aces</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player N</td>
-                  <td>12</td>
-                  <td>3</td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Sets: 1-2 | Current Set: 18-21</p>
-          </div>
-          <button class="back-btn" onclick="closeDetail()">Back</button>
-        </div>
-        
-        <!-- Detailed Scorecard for Table Tennis -->
-        <div class="detailed-scorecard" id="detailTableTennis">
-          <div class="scorecard-detail-header">
-            <span class="sport-name">Table Tennis - Detailed Scorecard</span>
-            <span id="modalStatusTableTennis" class="status-badge"></span>
-          </div>
-          <div class="detail-tabs">
-            <button class="tab-btn active" onclick="switchTeam('detailTableTennis','TeamA')">Team Spin</button>
-            <button class="tab-btn" onclick="switchTeam('detailTableTennis','TeamB')">Team Smash</button>
-          </div>
-          <div class="team-detail active" id="detailTableTennisTeamA">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Games Won</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player P</td>
-                  <td>3</td>
-                  <td>11, 8, 11, 7</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Best of 5 | Current Game: 11-9</p>
-          </div>
-          <div class="team-detail" id="detailTableTennisTeamB" style="display:none;">
-            <table class="score-table">
-              <thead>
-                <tr>
-                  <th>Player</th>
-                  <th>Games Won</th>
-                  <th>Points</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Player Q</td>
-                  <td>1</td>
-                  <td>7, 11, 8, 11</td>
-                </tr>
-              </tbody>
-            </table>
-            <p>Best of 5 | Current Game: 11-9</p>
-          </div>
-          <button class="back-btn" onclick="closeDetail()">Back</button>
         </div>
       </div>
-    </div>
-  </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 SportsBook. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/kirat.g09/?utm_source=qr"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-section">
-        <h4>Platform</h4>
-        <ul>
-          <li><a href="#">Scan</a></li>
-          <li><a href="#">Sports</a></li>
-          <li><a href="#">Leaderboard</a></li>
-          <li><a href="#">Live Scoring</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Features</h4>
-        <ul>
-          <li><a href="#">Occupancy</a></li>
-          <li><a href="#">Player Search</a></li>
-          <li><a href="#">Booking</a></li>
-          <li><a href="#">Others</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Community</a></li>
-          <li><a href="#">Tutorials</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-note">
-      © 2025 SportsBook. All rights reserved.
-    </div>
-  </footer>
-  
-  <script>
-    // Function to switch between Live and Completed sections
-    function showSection(status) {
-      if (status === 'live') {
-        document.getElementById('liveSection').style.display = 'block';
-        document.getElementById('completedSection').style.display = 'none';
-        document.getElementById('liveBtn').classList.add('active');
-        document.getElementById('completedBtn').classList.remove('active');
-      } else {
-        document.getElementById('liveSection').style.display = 'none';
-        document.getElementById('completedSection').style.display = 'block';
-        document.getElementById('completedBtn').classList.add('active');
-        document.getElementById('liveBtn').classList.remove('active');
-      }
-    }
-    
-    // Function to open detailed scorecard modal for a given sport and status
-    function openDetail(sport, status) {
-      // Hide live scorecards container
-      document.querySelector('.live-scoreboard-container').style.display = 'none';
-      // Show modal overlay
-      document.getElementById('detailModal').style.display = 'flex';
-      
-      var statusText = (status === 'live') ? 'LIVE' : 'COMPLETED';
-      var statusClass = (status === 'live') ? 'live' : 'completed';
-      
-      if (document.getElementById('modalStatus')) {
-        document.getElementById('modalStatus').className = 'status-badge ' + statusClass;
-        document.getElementById('modalStatus').textContent = statusText;
-      }
-      if (document.getElementById('modalStatusBasketball')) {
-        document.getElementById('modalStatusBasketball').className = 'status-badge ' + statusClass;
-        document.getElementById('modalStatusBasketball').textContent = statusText;
-      }
-      if (document.getElementById('modalStatusFootball')) {
-        document.getElementById('modalStatusFootball').className = 'status-badge ' + statusClass;
-        document.getElementById('modalStatusFootball').textContent = statusText;
-      }
-      if (document.getElementById('modalStatusVolleyball')) {
-        document.getElementById('modalStatusVolleyball').className = 'status-badge ' + statusClass;
-        document.getElementById('modalStatusVolleyball').textContent = statusText;
-      }
-      if (document.getElementById('modalStatusTableTennis')) {
-        document.getElementById('modalStatusTableTennis').className = 'status-badge ' + statusClass;
-        document.getElementById('modalStatusTableTennis').textContent = statusText;
-      }
-      
-      // Hide all detailed scorecards
-      document.querySelectorAll('.detailed-scorecard').forEach(function(el) {
-        el.classList.remove('active');
+    <!-- JAVASCRIPT -->
+    <script>
+      // Sidebar Toggle
+      const menuBtn = document.getElementById('menuBtn');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarClose = document.getElementById('sidebarClose');
+      menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('expanded');
       });
-      
-      // For Cricket completed, open the completed version; otherwise open normally
-      if (sport.toLowerCase() === 'cricket' && status === 'completed') {
-        document.getElementById('detailCricketCompleted').classList.add('active');
-      } else {
-        switch (sport.toLowerCase()) {
-          case 'cricket':
-            document.getElementById('detailCricket').classList.add('active');
-            break;
-          case 'basketball':
-            document.getElementById('detailBasketball').classList.add('active');
-            break;
-          case 'football':
-            document.getElementById('detailFootball').classList.add('active');
-            break;
-          case 'volleyball':
-            document.getElementById('detailVolleyball').classList.add('active');
-            break;
-          case 'table tennis':
-            document.getElementById('detailTableTennis').classList.add('active');
-            break;
-          default:
-            alert('Detailed scorecard for ' + sport + ' is not available.');
+      sidebarClose.addEventListener('click', () => {
+        sidebar.classList.remove('expanded');
+      });
+
+      // Switch between Live and Completed sections
+      function showSection(status) {
+        if (status === 'live') {
+          document.getElementById('liveSection').style.display = 'block';
+          document.getElementById('completedSection').style.display = 'none';
+          document.getElementById('liveBtn').classList.add('active');
+          document.getElementById('completedBtn').classList.remove('active');
+        } else {
+          document.getElementById('liveSection').style.display = 'none';
+          document.getElementById('completedSection').style.display = 'block';
+          document.getElementById('completedBtn').classList.add('active');
+          document.getElementById('liveBtn').classList.remove('active');
         }
       }
-    }
-    
-    // Function to close the modal (Back button)
-    function closeDetail() {
-      document.getElementById('detailModal').style.display = 'none';
-      document.querySelector('.live-scoreboard-container').style.display = 'block';
-    }
-    
-    // Function to switch team details in the modal
-    function switchTeam(detailCardId, team) {
-      var detailCard = document.getElementById(detailCardId);
-      var tabButtons = detailCard.querySelectorAll('.tab-btn');
-      var teamDetails = detailCard.querySelectorAll('.team-detail');
-      
-      tabButtons.forEach(function(btn) {
-        btn.classList.remove('active');
-      });
-      teamDetails.forEach(function(detail) {
-        detail.classList.remove('active');
-        detail.style.display = 'none';
-      });
-      
-      var teamId = detailCardId + team;
-      var activeTeam = document.getElementById(teamId);
-      if (activeTeam) {
-        activeTeam.classList.add('active');
-        activeTeam.style.display = 'block';
+
+      // Function for opening detailed scorecard modals (demo version)
+      function openDetail(sport, status) {
+        alert("Detailed Scorecard for " + sport + " (" + status + ")");
       }
-      
-      tabButtons.forEach(function(btn) {
-        if (btn.getAttribute('onclick').indexOf(team) !== -1) {
-          btn.classList.add('active');
-        }
-      });
-    }
-  </script>
-</body>
+    </script>
+  </body>
 </html>

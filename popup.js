@@ -131,8 +131,9 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
       
       // Append the popup to the body
+      overlay.appendChild(popup);
       document.body.appendChild(overlay);
-      document.body.appendChild(popup);
+      
       
       // Prevent body scrolling when popup is open
       document.body.style.overflow = 'hidden';

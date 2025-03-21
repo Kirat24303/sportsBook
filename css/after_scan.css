@@ -1,0 +1,206 @@
+/* =====================================
+   After Scan Page Specific Styles
+   (Theme overrides and layout adjustments)
+===================================== */
+
+/* Header adjustments: force header-content full width and center logo */
+.header-content {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Menu Button styled like the login button used on other pages */
+  .menu-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    color: var(--bg-color);
+    background-color: var(--#0066ff);
+    padding: 7px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+  }
+  .menu-btn:hover {
+    background-color: #0f5da1;
+  }
+  
+  /* Ensure the login button is flush right */
+  .header-right {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Player Details Section */
+  .player-details-section {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Profile Card styling */
+  .profile-card {
+    background-color: #27303f;
+    border: 1px solid var(--playercard-border);
+    border-radius: 8px;
+    padding: 20px;
+    color: var(--white);
+  }
+  .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  .profile-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--white);
+  }
+  /* Verified button now green */
+  .profile-status {
+    background-color: #28a745;
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .info-group {
+    display: flex;
+    gap: 10px;
+  }
+  .info-group label {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+  }
+  .info-group span {
+    color: var(--white);
+    font-size: 1.1rem;
+  }
+  
+  /* Booking Form styling */
+  .booking-form {
+    background-color: #27303f;
+    border: 1px solid var(--playercard-border);
+    border-radius: 8px;
+    padding: 20px;
+    color: var(--white);
+    margin-top: 10px;
+  }
+  .booking-form .form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .booking-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+  }
+  .number-input {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .number-input button {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 4px;
+    width: 32px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  .number-input input[type="number"] {
+    width: 60px;
+    height: 38px;
+    text-align: center;
+    border: 1px solid var(--playercard-border);
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: var(--white);
+    font-size: 1rem;
+  }
+  /* Narrow select box for sport */
+  .booking-form select {
+    width: 180px;
+    padding: 8px;
+    border: 1px solid var(--playercard-border);
+    border-radius: 4px;
+    background-color: #1a1a1a;
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .equipment-section {
+    margin-top: 15px;
+  }
+  .equipment-section h3 {
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+  }
+  .equipment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .equipment-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a1a;
+    border: 1px solid var(--playercard-border);
+    border-radius: 4px;
+    padding: 8px;
+  }
+  .equipment-name {
+    color: var(--light-grey);
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+  .submit-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+  .submit-btn:hover {
+    background-color: #0f5da1;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .menu-btn {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+    }
+    .booking-form select {
+      width: 100%;
+    }
+  }
+   

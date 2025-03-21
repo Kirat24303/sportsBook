@@ -1,829 +1,677 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-time Occupancy | SportsBook</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Chart.js for data visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Occupancy | SportsBook</title>
+  <!-- Base and Page-Specific CSS -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/occupancy.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Header Section -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <a href="index.html" class="logo-link">
-                    <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo">
-                    <span class="logo-text">SportsBook</span>
-                </a>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li class="dropdown">
-                        <a href="#">Sports <i class="fas fa-chevron-down"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Live Scoring <i class="fas fa-chevron-down"></i></a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Coin Toss <i class="fas fa-chevron-down"></i></a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="header-right">
-                <a href="#" class="login-btn">Log in <i class="fas fa-chevron-down"></i></a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="main-container">
-        <h1 class="page-title">Real-time Occupancy</h1>
-        
-        <!-- Tabs for different features -->
-        <div class="tabs">
-            <button class="tab-button active" onclick="showTab('liveVacancy')">Live Vacancy</button>
-            <button class="tab-button" onclick="showTab('timeTable')">Time Table</button>
-            <button class="tab-button" onclick="showTab('dataAnalysis')">Data Analysis</button>
-        </div>
-        
-        <!-- Live Vacancy Section -->
-        <div id="liveVacancy" class="tab-content active">
-            <div class="sport-selector">
-                <label for="sportSelect">Select Sport:</label>
-                <select id="sportSelect" onchange="updateLiveVacancy()">
-                    <option value="badminton">Badminton</option>
-                    <option value="gym">Gym</option>
-                    <option value="cricket">Cricket</option>
-                    <option value="football">Football</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="volleyball">Volleyball</option>
-                    <option value="tabletennis">Table Tennis</option>
-                    <option value="lawntennis">Lawn Tennis</option>
-                </select>
-            </div>
-            
-            <div class="occupancy-display">
-                <div class="occupancy-card">
-                    <div class="occupancy-header">
-                        <h2 id="sportTitle">Badminton</h2>
-                        <span class="status-badge available">Available</span>
-                    </div>
-                    <div class="occupancy-details">
-                        <div class="detail-item">
-                            <i class="fas fa-users"></i>
-                            <div class="detail-info">
-                                <span class="detail-label">Students Present</span>
-                                <span id="studentCount" class="detail-value">4</span>
-                            </div>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-percentage"></i>
-                            <div class="detail-info">
-                                <span class="detail-label">Occupancy Rate</span>
-                                <span id="occupancyRate" class="detail-value">40%</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3>Equipment in Use</h3>
-                    <div class="equipment-list" id="equipmentList">
-                        <div class="equipment-item">
-                            <span class="equipment-name">Racquets</span>
-                            <span class="equipment-count">4</span>
-                        </div>
-                        <div class="equipment-item">
-                            <span class="equipment-name">Shuttlecocks</span>
-                            <span class="equipment-count">1</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="court-visualization">
-                    <h3>Court Visualization</h3>
-                    <div class="court-container" id="courtContainer">
-                        <!-- Court visualization will be updated by JavaScript -->
-                        <div class="court badminton-court">
-                            <div class="court-player" style="top: 20%; left: 20%;" title="Player 1"></div>
-                            <div class="court-player" style="top: 20%; left: 70%;" title="Player 2"></div>
-                            <div class="court-player" style="top: 70%; left: 20%;" title="Player 3"></div>
-                            <div class="court-player" style="top: 70%; left: 70%;" title="Player 4"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Time Table Section -->
-        <div id="timeTable" class="tab-content">
-            <div class="sport-selector">
-                <label for="timeTableSportSelect">Select Sport:</label>
-                <select id="timeTableSportSelect" onchange="updateTimeTable()">
-                    <option value="badminton">Badminton</option>
-                    <option value="gym">Gym</option>
-                    <option value="cricket">Cricket</option>
-                    <option value="football">Football</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="volleyball">Volleyball</option>
-                    <option value="tabletennis">Table Tennis</option>
-                    <option value="lawntennis">Lawn Tennis</option>
-                </select>
-            </div>
-            
-            <div class="timetable-container">
-                <h2 id="timeTableSportTitle">Badminton - Weekly Schedule</h2>
-                
-                <div class="timetable">
-                    <div class="timetable-header">
-                        <div class="time-column">Time</div>
-                        <div class="day-column">Monday</div>
-                        <div class="day-column">Tuesday</div>
-                        <div class="day-column">Wednesday</div>
-                        <div class="day-column">Thursday</div>
-                        <div class="day-column">Friday</div>
-                        <div class="day-column">Saturday</div>
-                        <div class="day-column">Sunday</div>
-                    </div>
-                    
-                    <div class="timetable-body" id="timetableBody">
-                        <!-- Time slots from 6 AM to 10 PM -->
-                        <div class="time-row">
-                            <div class="time-column">6:00 - 8:00</div>
-                            <div class="day-column faculty">Faculty</div>
-                            <div class="day-column">-</div>
-                            <div class="day-column faculty">Faculty</div>
-                            <div class="day-column">-</div>
-                            <div class="day-column faculty">Faculty</div>
-                            <div class="day-column">-</div>
-                            <div class="day-column">-</div>
-                        </div>
-                        <div class="time-row">
-                            <div class="time-column">8:00 - 10:00</div>
-                            <div class="day-column girls">Girls</div>
-                            <div class="day-column team">College Team</div>
-                            <div class="day-column girls">Girls</div>
-                            <div class="day-column team">College Team</div>
-                            <div class="day-column girls">Girls</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                        </div>
-                        <div class="time-row">
-                            <div class="time-column">10:00 - 12:00</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column mtech">MTech/PhD</div>
-                            <div class="day-column mtech">MTech/PhD</div>
-                        </div>
-                        <div class="time-row">
-                            <div class="time-column">12:00 - 14:00</div>
-                            <div class="day-column">-</div>
-                            <div class="day-column">-</div>
-                            <div class="day-column">-</div>
-                            <div class="day-column">-</div>
-                            <div class="day-column">-</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                        </div>
-                        <div class="time-row">
-                            <div class="time-column">14:00 - 16:00</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column team">College Team</div>
-                            <div class="day-column team">College Team</div>
-                        </div>
-                        <div class="time-row">
-                            <div class="time-column">16:00 - 18:00</div>
-                            <div class="day-column team">College Team</div>
-                            <div class="day-column girls">Girls</div>
-                            <div class="day-column team">College Team</div>
-                            <div class="day-column girls">Girls</div>
-                            <div class="day-column team">College Team</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                        </div>
-                        <div class="time-row">
-                            <div class="time-column">18:00 - 20:00</div>
-                            <div class="day-column mtech">MTech/PhD</div>
-                            <div class="day-column mtech">MTech/PhD</div>
-                            <div class="day-column mtech">MTech/PhD</div>
-                            <div class="day-column mtech">MTech/PhD</div>
-                            <div class="day-column mtech">MTech/PhD</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                        </div>
-                        <div class="time-row">
-                            <div class="time-column">20:00 - 22:00</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                            <div class="day-column open">Open</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timetable-legend">
-                    <div class="legend-item">
-                        <span class="legend-color faculty"></span>
-                        <span class="legend-text">Faculty</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color team"></span>
-                        <span class="legend-text">College Team</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color girls"></span>
-                        <span class="legend-text">Girls</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color mtech"></span>
-                        <span class="legend-text">MTech/PhD</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color open"></span>
-                        <span class="legend-text">Open</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Data Analysis Section -->
-        <div id="dataAnalysis" class="tab-content">
-            <div class="sport-selector">
-                <label for="analysisSportSelect">Select Sport:</label>
-                <select id="analysisSportSelect" onchange="updateAnalysisCharts()">
-                    <option value="badminton">Badminton</option>
-                    <option value="gym">Gym</option>
-                    <option value="cricket">Cricket</option>
-                    <option value="football">Football</option>
-                    <option value="basketball">Basketball</option>
-                    <option value="volleyball">Volleyball</option>
-                    <option value="tabletennis">Table Tennis</option>
-                    <option value="lawntennis">Lawn Tennis</option>
-                </select>
-            </div>
-            
-            <div class="analysis-container">
-                <div class="chart-container">
-                    <h3>Weekly Attendance</h3>
-                    <canvas id="weeklyChart"></canvas>
-                </div>
-                
-                <div class="chart-container">
-                    <h3>Monthly Attendance</h3>
-                    <canvas id="monthlyChart"></canvas>
-                </div>
-                
-                <div class="chart-container">
-                    <h3>Peak Hours (Last 30 Days)</h3>
-                    <canvas id="peakHoursChart"></canvas>
-                </div>
-                
-                <div class="stats-container">
-                    <h3>Usage Statistics</h3>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-value" id="totalUsers">245</div>
-                            <div class="stat-label">Total Users This Month</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="avgDuration">1.5</div>
-                            <div class="stat-label">Average Session (hours)</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="peakDay">Friday</div>
-                            <div class="stat-label">Most Popular Day</div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-value" id="peakTime">18:00</div>
-                            <div class="stat-label">Peak Time</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Sidebar (Collapsible) -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2 style="color:#0782da">Menu</h2>
+      <button class="sidebar-close" id="sidebarClose">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="menu-parent">
+          <span class="menu-title" style="color:#0782da">Platform</span>
+          <ul class="submenu">
+            <li><a href="index.html">Scan</a></li>
+            <li><a href="index.html">Sports</a></li>
+            <li><a href="#">Leaderboard</a></li>
+            <li><a href="live_scoring.html">Live Scoring</a></li>
+          </ul>
+        </li>
+        <li class="menu-parent">
+          <span class="menu-title" style="color:#0782da">Features</span>
+          <ul class="submenu">
+            <li><a href="occupancy.html">Occupancy</a></li>
+            <li><a href="playersearch.html">Player Search</a></li>
+            <li><a href="bookingsystem.html">Booking</a></li>
+            <li><a href="cointoss.html">Coin Toss</a></li>
+            <li><a href="others.html">Others</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </aside>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <!-- <div class="footer-logo">
-                <a href="index.html" class="logo-link">
-                    <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo">
-                    <span class="logo-text">SportsBook</span>
-                </a>
-            </div> -->
-            <div class="footer-links">
-                <div class="footer-column">
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="#">Scan</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Leaderboard</a></li>
-                        <li><a href="#">Live Scoring</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Features</h4>
-                    <ul>
-                        <li><a href="#">Occupancy</a></li>
-                        <li><a href="#">Player Search</a></li>
-                        <li><a href="#">Booking</a></li>
-                        <li><a href="#">Others</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Tutorials</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 SportsBook. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div>
-    </footer>
+  <!-- HEADER -->
+  <header>
+    <div class="header-content">
+      <!-- Menu Button (Styled like the login button) -->
+      <div class="menu-btn" id="menuBtn">Menu</div>
+      <!-- Centered SportsBook Logo & Text -->
+      <div class="header-center">
+        <a href="index.html" class="logo-link">
+          <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo" class="header-logo" />
+          <span class="logo-text">SportsBook</span>
+        </a>
+      </div>
+      <!-- Login Button on the Right -->
+      <div class="header-right">
+        <a href="#" class="login-btn">Log in</a>
+      </div>
+    </div>
+  </header>
 
-    <!-- JavaScript for functionality -->
-    <script>
-        // Tab switching functionality
-        function showTab(tabId) {
-            // Hide all tab contents
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all tab buttons
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // Show the selected tab content
-            document.getElementById(tabId).classList.add('active');
-            
-            // Add active class to the clicked button
-            event.target.classList.add('active');
-            
-            // Initialize charts if data analysis tab is selected
-            if (tabId === 'dataAnalysis') {
-                initializeCharts();
-            }
+  <!-- MAIN CONTENT -->
+  <div class="main-container">
+    <h1 class="page-title" style="color:#fff">Real-time Occupancy</h1>
+    
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-button active" onclick="showTab('liveVacancy', event)">Live Vacancy</button>
+      <button class="tab-button" onclick="showTab('timeTable', event)">Time Table</button>
+      <button class="tab-button" onclick="showTab('dataAnalysis', event)">Data Analysis</button>
+    </div>
+    
+    <!-- LIVE VACANCY SECTION -->
+    <div id="liveVacancy" class="tab-content active">
+      <div class="sport-selector">
+        <label for="sportSelect" style="color:#fff">Select Sport:</label>
+        <select id="sportSelect" onchange="updateLiveVacancy()">
+          <option value="badminton">Badminton</option>
+          <option value="gym">Gym</option>
+          <option value="cricket">Cricket</option>
+          <option value="football">Football</option>
+          <option value="basketball">Basketball</option>
+          <option value="volleyball">Volleyball</option>
+          <option value="tabletennis">Table Tennis</option>
+          <option value="lawntennis">Lawn Tennis</option>
+        </select>
+      </div>
+      <div class="occupancy-display">
+        <!-- Occupancy Card -->
+        <div class="occupancy-card">
+          <div class="occupancy-header">
+            <h2 id="sportTitle" style="color:#0782da">Badminton</h2>
+            <span class="status-badge available">Available</span>
+          </div>
+          <div class="occupancy-details">
+            <div class="detail-item">
+              <i class="fas fa-users"></i>
+              <div class="detail-info">
+                <span class="detail-label" style="color:#0782da">Students Present</span>
+                <span id="studentCount" class="detail-value">4</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-percentage"></i>
+              <div class="detail-info">
+                <span class="detail-label" style="color:#0782da">Occupancy Rate</span>
+                <span id="occupancyRate" class="detail-value">40%</span>
+              </div>
+            </div>
+          </div>
+          <h3 style="color:#0782da">Equipment in Use</h3>
+          <div class="equipment-list" id="equipmentList">
+            <!-- Updated dynamically -->
+          </div>
+        </div>
+        <!-- Court Visualization -->
+        <div class="court-visualization">
+          <h3 style="color:#0782da">Court Visualization</h3>
+          <div class="court-container" id="courtContainer">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- TIME TABLE SECTION -->
+    <div id="timeTable" class="tab-content">
+      <div class="sport-selector">
+        <label for="timeTableSportSelect" style="color:#fff">Select Sport:</label>
+        <select id="timeTableSportSelect" onchange="updateTimeTable()">
+          <option value="badminton">Badminton</option>
+          <option value="gym">Gym</option>
+          <option value="cricket">Cricket</option>
+          <option value="football">Football</option>
+          <option value="basketball">Basketball</option>
+          <option value="volleyball">Volleyball</option>
+          <option value="tabletennis">Table Tennis</option>
+          <option value="lawntennis">Lawn Tennis</option>
+        </select>
+      </div>
+      <div class="timetable-container">
+        <h2 id="timeTableSportTitle" style="color:#0782da">Badminton - Weekly Schedule</h2>
+        <div class="timetable">
+          <div class="timetable-header">
+            <div class="time-column">06:00 - 08:00</div>
+            <div class="day-column">Monday</div>
+            <div class="day-column">Tuesday</div>
+            <div class="day-column">Wednesday</div>
+            <div class="day-column">Thursday</div>
+            <div class="day-column">Friday</div>
+            <div class="day-column">Saturday</div>
+            <div class="day-column">Sunday</div>
+          </div>
+          <div class="timetable-body" id="timetableBody">
+            <!-- Full timetable details -->
+            <div class="time-row">
+              <div class="time-column">06:00 - 08:00</div>
+              <div class="day-column faculty" style="color:#fff">Faculty</div>
+              <div class="day-column">--</div>
+              <div class="day-column faculty" style="color:#fff">Faculty</div>
+              <div class="day-column">--</div>
+              <div class="day-column faculty" style="color:#fff">Faculty</div>
+              <div class="day-column">--</div>
+              <div class="day-column">--</div>
+            </div>
+            <div class="time-row">
+              <div class="time-column">08:00 - 10:00</div>
+              <div class="day-column girls" style="color:#fff">Girls</div>
+              <div class="day-column team" style="color:#fff">College Team</div>
+              <div class="day-column girls" style="color:#fff">Girls</div>
+              <div class="day-column team" style="color:#fff">College Team</div>
+              <div class="day-column girls" style="color:#fff">Girls</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+            </div>
+            <div class="time-row">
+              <div class="time-column">10:00 - 12:00</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
+              <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
+            </div>
+            <div class="time-row">
+              <div class="time-column">12:00 - 14:00</div>
+              <div class="day-column">--</div>
+              <div class="day-column">--</div>
+              <div class="day-column">--</div>
+              <div class="day-column">--</div>
+              <div class="day-column">--</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+            </div>
+            <div class="time-row">
+              <div class="time-column">14:00 - 16:00</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column team" style="color:#fff">College Team</div>
+              <div class="day-column team" style="color:#fff">College Team</div>
+            </div>
+            <div class="time-row">
+              <div class="time-column">16:00 - 18:00</div>
+              <div class="day-column team" style="color:#fff">College Team</div>
+              <div class="day-column girls" style="color:#fff">Girls</div>
+              <div class="day-column team" style="color:#fff">College Team</div>
+              <div class="day-column girls" style="color:#fff">Girls</div>
+              <div class="day-column team" style="color:#fff">College Team</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+            </div>
+            <div class="time-row">
+              <div class="time-column">18:00 - 20:00</div>
+              <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
+              <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
+              <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
+              <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
+              <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+            </div>
+            <div class="time-row">
+              <div class="time-column">20:00 - 22:00</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+              <div class="day-column open" style="color:#fff">Open</div>
+            </div>
+          </div>
+        </div>
+        <div class="timetable-legend">
+          <div class="legend-item">
+            <span class="legend-color faculty"></span>
+            <span class="legend-text" style="color:#0782da">Faculty</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color team"></span>
+            <span class="legend-text" style="color:#0782da">College Team</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color girls"></span>
+            <span class="legend-text" style="color:#0782da">Girls</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color mtech"></span>
+            <span class="legend-text" style="color:#0782da">MTech/PhD</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color open"></span>
+            <span class="legend-text" style="color:#0782da">Open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- DATA ANALYSIS SECTION -->
+    <div id="dataAnalysis" class="tab-content">
+      <div class="sport-selector">
+        <label for="analysisSportSelect" style="color:#fff">Select Sport:</label>
+        <select id="analysisSportSelect" onchange="updateAnalysisCharts()">
+          <option value="badminton">Badminton</option>
+          <option value="gym">Gym</option>
+          <option value="cricket">Cricket</option>
+          <option value="football">Football</option>
+          <option value="basketball">Basketball</option>
+          <option value="volleyball">Volleyball</option>
+          <option value="tabletennis">Table Tennis</option>
+          <option value="lawntennis">Lawn Tennis</option>
+        </select>
+      </div>
+      <div class="analysis-container">
+        <div class="chart-container">
+          <h3 style="color:#fff">Weekly Attendance</h3>
+          <canvas id="weeklyChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h3 style="color:#fff">Monthly Attendance</h3>
+          <canvas id="monthlyChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <h3 style="color:#fff">Peak Hours (Last 30 Days)</h3>
+          <canvas id="peakHoursChart"></canvas>
+        </div>
+        <div class="stats-container">
+          <h3 style="color:#fff">Usage Statistics</h3>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value" id="totalUsers">245</div>
+              <div class="stat-label" style="color:#0782da">Total Users This Month</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="avgDuration">1.5</div>
+              <div class="stat-label" style="color:#0782da">Average Session (hours)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="peakDay">Friday</div>
+              <div class="stat-label" style="color:#0782da">Most Popular Day</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="peakTime">18:00</div>
+              <div class="stat-label" style="color:#0782da">Peak Time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4 style="color:#0782da">Platform</h4>
+          <ul>
+            <li><a href="#">Scan</a></li>
+            <li><a href="#">Sports</a></li>
+            <li><a href="#">Leaderboard</a></li>
+            <li><a href="live_scoring.html">Live Scoring</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 style="color:#0782da">Features</h4>
+          <ul>
+            <li><a href="occupancy.html">Occupancy</a></li>
+            <li><a href="playersearch.html">Player Search</a></li>
+            <li><a href="bookingsystem.html">Booking</a></li>
+            <li><a href="others.html">Others</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 style="color:#0782da">Resources</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 style="color:#0782da">Company</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 SportsBook. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Sidebar Toggle (same as occupancy page)
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarClose = document.getElementById('sidebarClose');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('expanded');
+    });
+    sidebarClose.addEventListener('click', () => {
+      sidebar.classList.remove('expanded');
+    });
+
+    // Tab Switching Functionality
+    function showTab(tabId, event) {
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+      if (tabId === 'dataAnalysis') initializeCharts();
+    }
+
+    // Sample sports data for demonstration purposes (expanded for all options)
+    const sportsData = {
+      badminton: {
+        title: 'Badminton',
+        students: 4,
+        capacity: 10,
+        equipment: [
+          { name: 'Racquets', count: 4 },
+          { name: 'Shuttlecocks', count: 1 }
+        ],
+        courtType: 'badminton-court',
+        players: [
+          { top: '20%', left: '20%' },
+          { top: '20%', left: '70%' },
+          { top: '70%', left: '20%' },
+          { top: '70%', left: '70%' }
+        ]
+      },
+      gym: {
+        title: 'Gym',
+        students: 12,
+        capacity: 25,
+        equipment: [
+          { name: 'Treadmills', count: 3 },
+          { name: 'Dumbbells', count: 8 },
+          { name: 'Benches', count: 4 },
+          { name: 'Exercise Bikes', count: 2 }
+        ],
+        courtType: 'gym-area',
+        players: [
+          { top: '10%', left: '10%' },
+          { top: '10%', left: '30%' },
+          { top: '10%', left: '50%' },
+          { top: '10%', left: '70%' },
+          { top: '30%', left: '20%' },
+          { top: '30%', left: '40%' },
+          { top: '30%', left: '60%' },
+          { top: '50%', left: '15%' },
+          { top: '50%', left: '35%' },
+          { top: '50%', left: '55%' },
+          { top: '70%', left: '25%' },
+          { top: '70%', left: '45%' }
+        ]
+      },
+      cricket: {
+        title: 'Cricket',
+        students: 11,
+        capacity: 11,
+        equipment: [
+          { name: 'Bats', count: 2 },
+          { name: 'Balls', count: 5 },
+          { name: 'Wickets', count: 1 }
+        ],
+        courtType: 'cricket-field',
+        players: Array.from({ length: 11 }, (_, i) => {
+          return { top: `${20 + i*5}%`, left: `${20 + i*5}%` };
+        })
+      },
+      football: {
+        title: 'Football',
+        students: 14,
+        capacity: 18,
+        equipment: [
+          { name: 'Balls', count: 2 },
+          { name: 'Cones', count: 8 },
+          { name: 'Bibs', count: 7 }
+        ],
+        courtType: 'football-field',
+        players: Array.from({ length: 14 }, (_, i) => {
+          return { top: `${10 + i*3}%`, left: `${10 + i*3}%` };
+        })
+      },
+      basketball: {
+        title: 'Basketball',
+        students: 8,
+        capacity: 10,
+        equipment: [
+          { name: 'Balls', count: 2 },
+          { name: 'Bibs', count: 4 }
+        ],
+        courtType: 'basketball-court',
+        players: Array.from({ length: 8 }, (_, i) => {
+          return { top: `${20 + (i%2)*50}%`, left: `${20 + (i%4)*20}%` };
+        })
+      },
+      volleyball: {
+        title: 'Volleyball',
+        students: 10,
+        capacity: 12,
+        equipment: [
+          { name: 'Balls', count: 2 },
+          { name: 'Net', count: 1 }
+        ],
+        courtType: 'volleyball-court',
+        players: Array.from({ length: 10 }, (_, i) => {
+          return { top: `${30 + (i%2)*40}%`, left: `${10 + (i%5)*20}%` };
+        })
+      },
+      tabletennis: {
+        title: 'Table Tennis',
+        students: 4,
+        capacity: 8,
+        equipment: [
+          { name: 'Paddles', count: 4 },
+          { name: 'Balls', count: 2 },
+          { name: 'Tables', count: 2 }
+        ],
+        courtType: 'tabletennis-area',
+        players: [
+          { top: '25%', left: '25%' },
+          { top: '25%', left: '75%' },
+          { top: '75%', left: '25%' },
+          { top: '75%', left: '75%' }
+        ]
+      },
+      lawntennis: {
+        title: 'Lawn Tennis',
+        students: 4,
+        capacity: 4,
+        equipment: [
+          { name: 'Racquets', count: 4 },
+          { name: 'Balls', count: 3 },
+          { name: 'Net', count: 1 }
+        ],
+        courtType: 'tennis-court',
+        players: [
+          { top: '20%', left: '20%' },
+          { top: '20%', left: '80%' },
+          { top: '80%', left: '20%' },
+          { top: '80%', left: '80%' }
+        ]
+      }
+    };
+
+    function updateLiveVacancy() {
+      const sportSelect = document.getElementById('sportSelect');
+      const selected = sportSelect.value;
+      const data = sportsData[selected] || sportsData.badminton;
+      document.getElementById('sportTitle').textContent = data.title;
+      document.getElementById('studentCount').textContent = data.students;
+      const rate = Math.round((data.students / data.capacity) * 100);
+      document.getElementById('occupancyRate').textContent = rate + '%';
+
+      const eqList = document.getElementById('equipmentList');
+      eqList.innerHTML = '';
+      data.equipment.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'equipment-item';
+        div.innerHTML = `<span class="equipment-name">${item.name}</span>
+                         <span class="equipment-count">${item.count}</span>`;
+        eqList.appendChild(div);
+      });
+
+      const courtContainer = document.getElementById('courtContainer');
+      courtContainer.innerHTML = '';
+      const court = document.createElement('div');
+      court.className = 'court ' + data.courtType;
+      data.players.forEach(p => {
+        const playerEl = document.createElement('div');
+        playerEl.className = 'court-player';
+        playerEl.style.top = p.top;
+        playerEl.style.left = p.left;
+        court.appendChild(playerEl);
+      });
+      courtContainer.appendChild(court);
+    }
+
+    function updateTimeTable() {
+      const sportSelect = document.getElementById('timeTableSportSelect');
+      const selected = sportSelect.value;
+      document.getElementById('timeTableSportTitle').textContent = `${sportsData[selected].title} - Weekly Schedule`;
+    }
+
+    let weeklyChart, monthlyChart, peakHoursChart;
+    function initializeCharts() {
+      const weeklyCtx = document.getElementById('weeklyChart').getContext('2d');
+      weeklyChart = new Chart(weeklyCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+          datasets: [{
+            label: 'Students',
+            data: [25,32,28,35,42,38,30],
+            backgroundColor: '#0782da',
+            borderColor: '#0782da',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#cccccc' } },
+            x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#cccccc' } }
+          },
+          plugins: { legend: { labels: { color: '#ffffff' } } }
         }
-        
-        // Live Vacancy data (simulated)
-        const sportsData = {
-            badminton: {
-                title: 'Badminton',
-                students: 4,
-                capacity: 10,
-                equipment: [
-                    { name: 'Racquets', count: 4 },
-                    { name: 'Shuttlecocks', count: 1 }
-                ],
-                courtType: 'badminton-court',
-                players: [
-                    { top: '20%', left: '20%' },
-                    { top: '20%', left: '70%' },
-                    { top: '70%', left: '20%' },
-                    { top: '70%', left: '70%' }
-                ]
-            },
-            gym: {
-                title: 'Gym',
-                students: 12,
-                capacity: 25,
-                equipment: [
-                    { name: 'Treadmills', count: 3 },
-                    { name: 'Dumbbells', count: 8 },
-                    { name: 'Benches', count: 4 },
-                    { name: 'Exercise Bikes', count: 2 }
-                ],
-                courtType: 'gym-area',
-                players: [
-                    { top: '10%', left: '10%' },
-                    { top: '10%', left: '30%' },
-                    { top: '10%', left: '50%' },
-                    { top: '10%', left: '70%' },
-                    { top: '30%', left: '20%' },
-                    { top: '30%', left: '40%' },
-                    { top: '30%', left: '60%' },
-                    { top: '50%', left: '15%' },
-                    { top: '50%', left: '35%' },
-                    { top: '50%', left: '55%' },
-                    { top: '70%', left: '25%' },
-                    { top: '70%', left: '45%' }
-                ]
-            },
-            cricket: {
-                title: 'Cricket',
-                students: 22,
-                capacity: 22,
-                equipment: [
-                    { name: 'Bats', count: 2 },
-                    { name: 'Balls', count: 3 },
-                    { name: 'Wickets', count: 1 },
-                    { name: 'Helmets', count: 2 }
-                ],
-                courtType: 'cricket-field',
-                players: Array.from({ length: 22 }, (_, i) => {
-                    const angle = (i / 22) * 2 * Math.PI;
-                    const radius = 40;
-                    const top = 50 + radius * Math.sin(angle);
-                    const left = 50 + radius * Math.cos(angle);
-                    return { top: `${top}%`, left: `${left}%` };
-                })
-            },
-            football: {
-                title: 'Football',
-                students: 14,
-                capacity: 22,
-                equipment: [
-                    { name: 'Balls', count: 2 },
-                    { name: 'Cones', count: 8 },
-                    { name: 'Bibs', count: 7 }
-                ],
-                courtType: 'football-field',
-                players: Array.from({ length: 14 }, (_, i) => {
-                    const row = Math.floor(i / 7);
-                    const col = i % 7;
-                    return { 
-                        top: `${20 + row * 50}%`, 
-                        left: `${10 + col * 13}%` 
-                    };
-                })
-            },
-            basketball: {
-                title: 'Basketball',
-                students: 8,
-                capacity: 10,
-                equipment: [
-                    { name: 'Balls', count: 2 },
-                    { name: 'Bibs', count: 4 }
-                ],
-                courtType: 'basketball-court',
-                players: Array.from({ length: 8 }, (_, i) => {
-                    const row = Math.floor(i / 4);
-                    const col = i % 4;
-                    return { 
-                        top: `${20 + row * 50}%`, 
-                        left: `${20 + col * 20}%` 
-                    };
-                })
-            },
-            volleyball: {
-                title: 'Volleyball',
-                students: 10,
-                capacity: 12,
-                equipment: [
-                    { name: 'Balls', count: 2 },
-                    { name: 'Net', count: 1 }
-                ],
-                courtType: 'volleyball-court',
-                players: Array.from({ length: 10 }, (_, i) => {
-                    const row = Math.floor(i / 5);
-                    const col = i % 5;
-                    return { 
-                        top: `${30 + row * 40}%`, 
-                        left: `${10 + col * 20}%` 
-                    };
-                })
-            },
-            tabletennis: {
-                title: 'Table Tennis',
-                students: 4,
-                capacity: 8,
-                equipment: [
-                    { name: 'Paddles', count: 4 },
-                    { name: 'Balls', count: 2 },
-                    { name: 'Tables', count: 2 }
-                ],
-                courtType: 'tabletennis-area',
-                players: [
-                    { top: '25%', left: '25%' },
-                    { top: '25%', left: '75%' },
-                    { top: '75%', left: '25%' },
-                    { top: '75%', left: '75%' }
-                ]
-            },
-            lawntennis: {
-                title: 'Lawn Tennis',
-                students: 4,
-                capacity: 4,
-                equipment: [
-                    { name: 'Racquets', count: 4 },
-                    { name: 'Balls', count: 3 },
-                    { name: 'Net', count: 1 }
-                ],
-                courtType: 'tennis-court',
-                players: [
-                    { top: '20%', left: '20%' },
-                    { top: '20%', left: '80%' },
-                    { top: '80%', left: '20%' },
-                    { top: '80%', left: '80%' }
-                ]
-            }
-        };
-        
-        // Update Live Vacancy display
-        function updateLiveVacancy() {
-            const sportSelect = document.getElementById('sportSelect');
-            const selectedSport = sportSelect.value;
-            const sportData = sportsData[selectedSport];
-            
-            // Update sport title
-            document.getElementById('sportTitle').textContent = sportData.title;
-            
-            // Update student count
-            document.getElementById('studentCount').textContent = sportData.students;
-            
-            // Update occupancy rate
-            const occupancyRate = Math.round((sportData.students / sportData.capacity) * 100);
-            document.getElementById('occupancyRate').textContent = `${occupancyRate}%`;
-            
-            // Update equipment list
-            const equipmentList = document.getElementById('equipmentList');
-            equipmentList.innerHTML = '';
-            
-            sportData.equipment.forEach(item => {
-                const equipmentItem = document.createElement('div');
-                equipmentItem.className = 'equipment-item';
-                equipmentItem.innerHTML = `
-                    <span class="equipment-name">${item.name}</span>
-                    <span class="equipment-count">${item.count}</span>
-                `;
-                equipmentList.appendChild(equipmentItem);
-            });
-            
-            // Update court visualization
-            const courtContainer = document.getElementById('courtContainer');
-            courtContainer.innerHTML = '';
-            
-            const court = document.createElement('div');
-            court.className = `court ${sportData.courtType}`;
-            
-            sportData.players.forEach((player, index) => {
-                const playerElement = document.createElement('div');
-                playerElement.className = 'court-player';
-                playerElement.style.top = player.top;
-                playerElement.style.left = player.left;
-                playerElement.title = `Player ${index + 1}`;
-                court.appendChild(playerElement);
-            });
-            
-            courtContainer.appendChild(court);
-            
-            // Update status badge
-            const statusBadge = document.querySelector('.status-badge');
-            if (occupancyRate >= 90) {
-                statusBadge.className = 'status-badge full';
-                statusBadge.textContent = 'Full';
-            } else if (occupancyRate >= 70) {
-                statusBadge.className = 'status-badge busy';
-                statusBadge.textContent = 'Busy';
-            } else {
-                statusBadge.className = 'status-badge available';
-                statusBadge.textContent = 'Available';
-            }
+      });
+
+      const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+      monthlyChart = new Chart(monthlyCtx, {
+        type: 'line',
+        data: {
+          labels: ['Week 1','Week 2','Week 3','Week 4'],
+          datasets: [{
+            label: 'Students',
+            data: [120,145,135,160],
+            backgroundColor: 'rgba(7,130,218,0.2)',
+            borderColor: '#0782da',
+            borderWidth: 2,
+            tension: 0.3,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#cccccc' } },
+            x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#cccccc' } }
+          },
+          plugins: { legend: { labels: { color: '#ffffff' } } }
         }
-        
-        // Update Time Table
-        function updateTimeTable() {
-            const sportSelect = document.getElementById('timeTableSportSelect');
-            const selectedSport = sportSelect.value;
-            
-            // Update sport title
-            document.getElementById('timeTableSportTitle').textContent = `${sportsData[selectedSport].title} - Weekly Schedule`;
-            
-            // In a real application, you would fetch the timetable data for the selected sport
-            // For this demo, we'll just show a message that the timetable has been updated
-            console.log(`Timetable updated for ${selectedSport}`);
-            
-            // Different sports would have different timetables
-            // This is just a placeholder for demonstration
+      });
+
+      const peakCtx = document.getElementById('peakHoursChart').getContext('2d');
+      peakHoursChart = new Chart(peakCtx, {
+        type: 'bar',
+        data: {
+          labels: ['06-08','08-10','10-12','12-14','14-16','16-18','18-20','20-22'],
+          datasets: [{
+            label: 'Average Users',
+            data: [8,15,12,5,18,25,30,20],
+            backgroundColor: '#0782da',
+            borderColor: '#0782da',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#cccccc' } },
+            x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#cccccc' } }
+          },
+          plugins: { legend: { labels: { color: '#ffffff' } } }
         }
-        
-        // Initialize charts for data analysis
-        let weeklyChart, monthlyChart, peakHoursChart;
-        
-        function initializeCharts() {
-            // Weekly attendance chart
-            const weeklyCtx = document.getElementById('weeklyChart').getContext('2d');
-            weeklyChart = new Chart(weeklyCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                    datasets: [{
-                        label: 'Students',
-                        data: [25, 32, 28, 35, 42, 38, 30],
-                        backgroundColor: '#0782da',
-                        borderColor: '#0782da',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#cccccc'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#cccccc'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#ffffff'
-                            }
-                        }
-                    }
-                }
-            });
-            
-            // Monthly attendance chart
-            const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
-            monthlyChart = new Chart(monthlyCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-                    datasets: [{
-                        label: 'Students',
-                        data: [120, 145, 135, 160],
-                        backgroundColor: 'rgba(7, 130, 218, 0.2)',
-                        borderColor: '#0782da',
-                        borderWidth: 2,
-                        tension: 0.3,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#cccccc'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#cccccc'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#ffffff'
-                            }
-                        }
-                    }
-                }
-            });
-            
-            // Peak hours chart
-            const peakHoursCtx = document.getElementById('peakHoursChart').getContext('2d');
-            peakHoursChart = new Chart(peakHoursCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['6-8', '8-10', '10-12', '12-14', '14-16', '16-18', '18-20', '20-22'],
-                    datasets: [{
-                        label: 'Average Users',
-                        data: [8, 15, 12, 5, 18, 25, 30, 20],
-                        backgroundColor: '#0782da',
-                        borderColor: '#0782da',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#cccccc'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: 'rgba(255, 255, 255, 0.1)'
-                            },
-                            ticks: {
-                                color: '#cccccc'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#ffffff'
-                            }
-                        }
-                    }
-                }
-            });
-        }
-        
-        // Update analysis charts based on selected sport
-        function updateAnalysisCharts() {
-            const sportSelect = document.getElementById('analysisSportSelect');
-            const selectedSport = sportSelect.value;
-            
-            // In a real application, you would fetch data for the selected sport
-            // For this demo, we'll just update with random data
-            
-            // Update weekly chart
-            const weeklyData = Array.from({length: 7}, () => Math.floor(Math.random() * 30) + 10);
-            weeklyChart.data.datasets[0].data = weeklyData;
-            weeklyChart.update();
-            
-            // Update monthly chart
-            const monthlyData = Array.from({length: 4}, () => Math.floor(Math.random() * 50) + 100);
-            monthlyChart.data.datasets[0].data = monthlyData;
-            monthlyChart.update();
-            
-            // Update peak hours chart
-            const peakHoursData = Array.from({length: 8}, () => Math.floor(Math.random() * 25) + 5);
-            peakHoursChart.data.datasets[0].data = peakHoursData;
-            peakHoursChart.update();
-            
-            // Update stats
-            document.getElementById('totalUsers').textContent = Math.floor(Math.random() * 200) + 100;
-            document.getElementById('avgDuration').textContent = (Math.random() * 2 + 0.5).toFixed(1);
-            
-            const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-            const randomDay = days[Math.floor(Math.random() * days.length)];
-            document.getElementById('peakDay').textContent = randomDay;
-            
-            const hours = ['10:00', '14:00', '16:00', '18:00', '20:00'];
-            const randomHour = hours[Math.floor(Math.random() * hours.length)];
-            document.getElementById('peakTime').textContent = randomHour;
-        }
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set default tab to Live Vacancy
-            showTab('liveVacancy');
-            
-            // Initialize Live Vacancy display
-            updateLiveVacancy();
-            
-            // Initialize Time Table
-            updateTimeTable();
-            
-            // Initialize charts (will be called when data analysis tab is selected)
-        });
-    </script>
+      });
+    }
+
+    // Countdown Timer (Starts from 1 Hour)
+    function startCountdown(duration, display) {
+      let timer = duration, hours, minutes, seconds;
+      setInterval(function () {
+          hours = parseInt(timer / 3600, 10);
+          minutes = parseInt((timer % 3600) / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          hours = hours < 10 ? "0" + hours : hours;
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          display.textContent = hours + ":" + minutes + ":" + seconds;
+
+          if (--timer < 0) {
+              timer = 0;
+          }
+      }, 1000);
+    }
+    window.onload = function () {
+      let oneHour = 60 * 60; // 1 hour in seconds
+      let display = document.getElementById('countdown-timer');
+      startCountdown(oneHour, display);
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showTab('liveVacancy', { target: document.querySelector('.tab-button.active') });
+      updateLiveVacancy();
+      updateTimeTable();
+    });
+  </script>
 </body>
 </html>
