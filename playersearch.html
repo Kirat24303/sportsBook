@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/playersearch.css" />
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
       /* Optional extra CSS overrides can go here */
     </style>
@@ -19,7 +20,7 @@
     <!-- Sidebar (Collapsible) - Same as occupancy -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
-        <h2 style="color:#0782da">Menu</h2>
+        <h2 style="color:var(--accent-color)">MENU</h2>
         <button class="sidebar-close" id="sidebarClose">
           <i class="fas fa-times"></i>
         </button>
@@ -27,7 +28,7 @@
       <nav class="sidebar-nav">
         <ul>
           <li class="menu-parent">
-            <span class="menu-title" style="color:#0782da">Platform</span>
+            <span class="menu-title" style="color:var(--accent-color)">Platform</span>
             <ul class="submenu">
               <li><a href="index.html">Scan</a></li>
               <li><a href="index.html">Sports</a></li>
@@ -36,7 +37,7 @@
             </ul>
           </li>
           <li class="menu-parent">
-            <span class="menu-title" style="color:#0782da">Features</span>
+            <span class="menu-title" style="color:var(--accent-color)">Features</span>
             <ul class="submenu">
               <li><a href="occupancy.html">Occupancy</a></li>
               <li><a href="playersearch.html">Player Search</a></li>
@@ -53,17 +54,17 @@
     <header>
       <div class="header-content">
         <!-- Menu Button on the Left -->
-        <div class="menu-btn" id="menuBtn">Menu</div>
+        <div class="menu-btn" id="menuBtn">MENU</div>
         <!-- Centered SportsBook Logo & Text -->
         <div class="header-center">
           <a href="index.html" class="logo-link">
-            <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo" class="header-logo" />
+            <img src="sblogo.png" alt="SportsBook Logo" class="header-logo" />
             <span class="logo-text">SportsBook</span>
           </a>
         </div>
         <!-- Login Button on the Right -->
         <div class="header-right">
-          <a href="#" class="login-btn">Log in</a>
+          <a href="#" class="login-btn">LOGIN</a>
         </div>
       </div>
     </header>
@@ -72,9 +73,9 @@
     <div class="main-container">
       <!-- Tabs for Player Search Features -->
       <div class="tabs">
-        <button class="tab-button active" data-tab="matchmaking">MATCHMAKING</button>
-        <button class="tab-button" data-tab="teammaking">TEAM-MAKING</button>
-        <button class="tab-button" data-tab="assistance">ASSISTANCE</button>
+        <button class="tab-button active" data-tab="matchmaking">Matchmaking</button>
+        <button class="tab-button" data-tab="teammaking">Team-Making</button>
+        <button class="tab-button" data-tab="assistance">Assistance</button>
       </div>
 
       <!-- MATCHMAKING SECTION -->
@@ -209,16 +210,16 @@
     <div class="footer-content">
       <div class="footer-links">
         <div class="footer-column">
-          <h4 style="color:#0782da">Platform</h4>
+          <h4 style="color:var(--accent-color)">Platform</h4>
           <ul>
-            <li><a href="#">Scan</a></li>
+            <li><a href="">Scan</a></li>
             <li><a href="#">Sports</a></li>
             <li><a href="#">Leaderboard</a></li>
             <li><a href="live_scoring.html">Live Scoring</a></li>
           </ul>
         </div>
         <div class="footer-column">
-          <h4 style="color:#0782da">Features</h4>
+          <h4 style="color:var(--accent-color)">Features</h4>
           <ul>
             <li><a href="occupancy.html">Occupancy</a></li>
             <li><a href="playersearch.html">Player Search</a></li>
@@ -227,7 +228,7 @@
           </ul>
         </div>
         <div class="footer-column">
-          <h4 style="color:#0782da">Resources</h4>
+          <h4 style="color:var(--accent-color)">Resources</h4>
           <ul>
             <li><a href="#">Help Center</a></li>
             <li><a href="#">Community</a></li>
@@ -236,7 +237,7 @@
           </ul>
         </div>
         <div class="footer-column">
-          <h4 style="color:#0782da">Company</h4>
+          <h4 style="color:var(--accent-color)">Company</h4>
           <ul>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Careers</a></li>
@@ -310,7 +311,7 @@
     }
 
     // Pagination variables for matchmaking
-    let playersPerPage = 21;
+    let playersPerPage = 20;
     let currentPage = 1;
     let totalPages = 1;
     let filteredPlayers = [];

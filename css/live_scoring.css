@@ -10,20 +10,23 @@
     margin: 20px 0;
   }
   .score-nav-btn {
-    padding: 10px 20px;
-    background-color: #27303f;
+    padding: 12px 24px;
+    background-color: #1e1e1e;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
     transition: background 0.3s;
   }
-  .score-nav-btn.active,
-  .score-nav-btn:hover {
-    background-color: var(--accent-color);
-    color: var(--bg-color);
+  .score-nav-btn.active {
+    background-color: #2d9a96;
+    color: white;
   }
+
+  .score-nav-btn:hover {
+    background-color: #103a3a;
+  }
+  
   
   /* Live Scoreboard Container */
   .live-scoreboard-container {
@@ -132,7 +135,7 @@
     transition: background 0.3s;
   }
   .details-btn:hover {
-    background-color: #0f5da1;
+    background-color: #1f6767;
   }
   
   /* Responsive Adjustments */

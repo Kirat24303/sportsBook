@@ -6,24 +6,22 @@
 
 /* ---------- HEADER & NAVIGATION ---------- */
 header {
-  background-color: #0c1422;
+  background-color: #1e1e1e;
   width: 100%;
   padding: 10px 0;
-  position: relative;
 }
 
 .header-content {
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  position: relative;
+  padding: 0 20px;
 }
 
+/* Remove absolute positioning and use flexbox */
 .menu-btn {
-  position: absolute;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
   background-color: #0066ff;  /* Same as login button */
   color: #fff;
   padding: 8px 16px;
@@ -33,28 +31,29 @@ header {
 }
 
 .header-center {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-logo {
-  height: 40px;
+  height: 25px;
   width: auto;
   vertical-align: middle;
 }
 
 .logo-text {
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: bold;
   color: #fff;
   vertical-align: middle;
   margin-left: 8px;
 }
 
+/* Remove absolute positioning from header-right */
 .header-right {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
 }
 
 .login-btn {
@@ -73,7 +72,7 @@ header {
   left: -300px; /* Hidden by default */
   width: 300px;
   height: 100%;
-  background-color: #0c1422;
+  background-color: #1e1e1e;
   z-index: 2000;
   transition: left 0.3s ease;
   overflow-y: auto;
@@ -161,7 +160,7 @@ header {
 
 .tab-button {
   padding: 10px 20px;
-  background-color: #27303f;
+  background-color: #1e1e1e;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -171,11 +170,11 @@ header {
 }
 
 .tab-button:hover {
-  background-color: #1f2a38;
+  background-color: #103a3a;
 }
 
 .tab-button.active {
-  background-color: #0782da;
+  background-color: #2d9a96;
   color: #0c1422;
 }
 
@@ -202,9 +201,8 @@ header {
 .sport-selector select {
   padding: 8px 12px;
   font-size: 1rem;
-  border: 1px solid #0782da;
   border-radius: 4px;
-  background-color: #0c1422;
+  background-color: #1e1e1e;
   color: #fff;
   outline: none;
 }
@@ -241,7 +239,7 @@ header {
 .occupancy-header h2 {
   font-size: 1.8rem;
   margin: 0;
-  color: #0782da;
+  color: #2d9a96;
 }
 
 .status-badge {
@@ -276,7 +274,7 @@ header {
 
 .detail-item i {
   font-size: 24px;
-  color: #0782da;
+  color: #2d9a96;
   margin-right: 15px;
 }
 
@@ -323,7 +321,7 @@ header {
 .court-visualization h3 {
   margin-bottom: 15px;
   font-size: 1.5rem;
-  color: #0782da;
+  color: #2d9a96;
 }
 .court-container {
   position: relative;
@@ -389,7 +387,7 @@ header {
   position: absolute;
   width: 20px;
   height: 20px;
-  background-color: #0782da;
+  background-color: #2d9a96;
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
@@ -404,7 +402,7 @@ header {
   margin: 0 auto 40px;
 }
 .timetable-container h2 {
-  color: #0782da;
+  color: #2d9a96;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -557,7 +555,7 @@ header {
 .stat-value {
   font-size: 32px;
   font-weight: bold;
-  color: #0782da;
+  color: #2d9a96;
   margin-bottom: 10px;
 }
 .stat-label {
@@ -567,7 +565,7 @@ header {
 
 /* ---------- FOOTER ---------- */
 footer {
-  background-color: #101827;
+  background-color: #1e1e1e;
   padding: 40px 20px;
   margin-top: 40px;
   color: #fff;
@@ -600,7 +598,7 @@ footer {
   transition: color 0.3s;
 }
 .footer-column ul li a:hover {
-  color: #0782da;
+  color: #2d9a96;
 }
 .footer-bottom {
   display: flex;
@@ -620,29 +618,644 @@ footer {
   transition: color 0.3s ease;
 }
 .social-links a:hover {
-  color: #0782da;
+  color: #2d9a96;
+}
+
+/* ==================================================
+   Occupancy Page Specific Styles
+   (Header, Sidebar, Tabs, Occupancy Card, Court Visualization,
+    Time Table, Data Analysis, Footer, etc.)
+================================================== */
+
+/* ---------- HEADER & NAVIGATION ---------- */
+header {
+  background-color: #1e1e1e;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.header-content {
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+/* Remove absolute positioning and use flexbox */
+.menu-btn {
+  background-color: #0066ff;  /* Same as login button */
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-logo {
+  height: 25px;
+  width: auto;
+  vertical-align: middle;
+}
+
+.logo-text {
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+/* Remove absolute positioning from header-right */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.login-btn {
+  background-color: #0066ff;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* ---------- SIDEBAR (Collapsible) ---------- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Hidden by default */
+  width: 300px;
+  height: 100%;
+  background-color: #1e1e1e;
+  z-index: 2000;
+  transition: left 0.3s ease;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.sidebar.expanded {
+  left: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.sidebar-header h2 {
+  font-size: 1.5rem;
+}
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 20px;
+}
+
+.menu-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.submenu {
+  padding-left: 15px;
+}
+
+.submenu li {
+  margin-bottom: 8px;
+}
+
+.sidebar-nav a {
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+}
+
+/* ---------- MAIN CONTAINER & TABS ---------- */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.page-title {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  background-color: #1e1e1e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.tab-button:hover {
+  background-color: #103a3a;
+}
+
+.tab-button.active {
+  background-color: #2d9a96;
+  color: #0c1422;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* ---------- SPORT SELECTOR ---------- */
+.sport-selector {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sport-selector label {
+  font-size: 1rem;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.sport-selector select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 4px;
+  background-color: #1e1e1e;
+  color: #fff;
+  outline: none;
+}
+
+/* ---------- OCCUPANCY DISPLAY ---------- */
+.occupancy-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+/* Occupancy Card */
+.occupancy-card {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  color: #fff;
+}
+
+.occupancy-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #444;
+}
+
+.occupancy-header h2 {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #2d9a96;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.status-badge.available { background-color: #28a745; }
+.status-badge.busy { background-color: #ffc107; color: #333; }
+.status-badge.full { background-color: #dc3545; }
+
+/* Occupancy Details */
+.occupancy-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 160px;
+  background-color: #333;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.detail-item i {
+  font-size: 24px;
+  color: #2d9a96;
+  margin-right: 15px;
+}
+
+.detail-label {
+  font-size: 14px;
+  color: #cccccc;
+}
+.detail-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Equipment List */
+.equipment-list {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.equipment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #444;
+}
+.equipment-item:last-child {
+  border-bottom: none;
+}
+.equipment-name { color: #cccccc; }
+.equipment-count { color: #fff; font-weight: bold; }
+
+/* ---------- COURT VISUALIZATION ---------- */
+.court-visualization {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.court-visualization h3 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #2d9a96;
+}
+.court-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: #333;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.court { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* Court Markings (Example for Badminton) */
+.badminton-court {
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  background-image: linear-gradient(to right, transparent 49%, #444 49%, #444 51%, transparent 51%),
+                    linear-gradient(to bottom, transparent 20%, #444 20%, #444 21%, transparent 21%),
+                    linear-gradient(to bottom, transparent 79%, #444 79%, #444 80%, transparent 80%);
+}
+.gym-area {
+  background-color: #3a3a3a;
+  background-image: repeating-linear-gradient(45deg, #333, #333 10px, #3a3a3a 10px, #3a3a3a 20px);
+}
+.cricket-field {
+  background-color: #3a3a3a;
+  border-radius: 50%;
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+  border: 2px solid #555;
+}
+.football-field {
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  background-image: linear-gradient(to right, transparent 49%, #444 49%, #444 51%, transparent 51%),
+                    linear-gradient(to bottom, transparent 10%, #444 10%, #444 11%, transparent 11%),
+                    linear-gradient(to bottom, transparent 89%, #444 89%, #444 90%, transparent 90%);
+}
+.basketball-court {
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  background-image: radial-gradient(circle at center, #444 5%, transparent 6%);
+}
+.volleyball-court {
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  background-image: linear-gradient(to right, transparent 49%, #444 49%, #444 51%, transparent 51%);
+}
+.tabletennis-area {
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  background-image: linear-gradient(to right, transparent 49%, #444 49%, #444 51%, transparent 51%),
+                    linear-gradient(to bottom, transparent 49%, #444 49%, #444 51%, transparent 51%);
+}
+.tennis-court {
+  background-color: #3a3a3a;
+  border: 2px solid #555;
+  background-image: linear-gradient(to right, transparent 49%, #444 49%, #444 51%, transparent 51%),
+                    linear-gradient(to bottom, transparent 20%, #444 20%, #444 21%, transparent 21%),
+                    linear-gradient(to bottom, transparent 79%, #444 79%, #444 80%, transparent 80%);
+}
+.court-player {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #2d9a96;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ---------- TIMETABLE SECTION ---------- */
+.timetable-container {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  max-width: 1000px;
+  margin: 0 auto 40px;
+}
+.timetable-container h2 {
+  color: #2d9a96;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.timetable {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+.timetable-header {
+  display: flex;
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+}
+.time-column {
+  min-width: 120px;
+  padding: 10px;
+  border-right: 1px solid #444;
+  text-align: center;
+}
+.day-column {
+  flex: 1;
+  min-width: 100px;
+  padding: 10px;
+  border-right: 1px solid #444;
+  text-align: center;
+}
+.day-column:last-child {
+  border-right: none;
+}
+.timetable-body {
+  background-color: #2a2a2a;
+}
+.time-row {
+  display: flex;
+  border-bottom: 1px solid #444;
+}
+.time-row:last-child {
+  border-bottom: none;
+}
+/* Color-coded classes */
+.day-column.faculty {
+  background-color: rgba(255,193,7,0.5);
+  color: #ffc107;
+}
+.day-column.team {
+  background-color: rgba(40,167,69,0.5);
+  color: #28a745;
+}
+.day-column.girls {
+  background-color: rgba(220,53,69,0.5);
+  color: #dc3545;
+}
+.day-column.mtech {
+  background-color: rgba(111,66,193,0.5);
+  color: #6f42c1;
+}
+.day-column.open {
+  background-color: rgba(23,162,184,0.5);
+  color: #17a2b8;
+}
+.timetable-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+}
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+.legend-color.faculty {
+  background-color: rgba(255,193,7,0.2);
+  border: 1px solid #ffbf00;
+}
+.legend-color.team {
+  background-color: rgba(40,167,69,0.2);
+  border: 1px solid #28a745;
+}
+.legend-color.girls {
+  background-color: rgba(220,53,69,0.2);
+  border: 1px solid #dc3545;
+}
+.legend-color.mtech {
+  background-color: rgba(111,66,193,0.2);
+  border: 1px solid #6f42c1;
+}
+.legend-color.open {
+  background-color: rgba(23,162,184,0.2);
+  border: 1px solid #17a2b8;
+}
+.legend-text {
+  color: #cccccc;
+}
+
+/* ---------- DATA ANALYSIS SECTION ---------- */
+.analysis-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+}
+.chart-container {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+.chart-container h3 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.stats-container {
+  background-color: #222;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1020px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  margin-top: 40px;
+  text-align: center;
+}
+.stats-container h3 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.stat-card {
+  background-color: #333;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #2d9a96;
+  margin-bottom: 10px;
+}
+.stat-label {
+  color: #cccccc;
+  font-size: 14px;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  background-color: #1e1e1e;
+  padding: 40px 20px;
+  margin-top: 40px;
+  color: #fff;
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 30px;
+}
+.footer-column h4 {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #fff;
+}
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+.footer-column ul li a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-column ul li a:hover {
+  color: #2d9a96;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #444;
+  padding-top: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+.social-links a {
+  color: #cccccc;
+  margin-left: 15px;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+.social-links a:hover {
+  color: #2d9a96;
 }
 
 /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
 @media (max-width: 768px) {
-  .header-content {
-    flex-wrap: wrap;
-    justify-content: center;
-    position: relative;
+  /* Stack header elements vertically */
+  .menu-btn,
+  .login-btn {
+    margin: 5px 0;
   }
-  .menu-btn {
-    position: absolute;
-    left: 20px;
-    top: 10px;
-  }
+  /* Remove the extra margin-top from header-center on mobile */
   .header-center {
-    margin-top: 40px;
+    margin-top: 0;
   }
-  .header-right {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-  }
+
   .occupancy-details {
     flex-direction: column;
     align-items: stretch;
@@ -651,4 +1264,32 @@ footer {
     margin: 0 auto 15px;
     min-width: unset;
   }
+}
+
+/* ---------- Duplicate Menu & Login Button Styling using CSS Variables ---------- */
+.menu-btn {
+  background-color: var(--accent-color);
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.menu-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.login-btn {
+  background-color: var(--accent-color);
+  color: var(--white);
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: var(--accent-hover);
 }

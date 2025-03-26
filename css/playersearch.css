@@ -12,7 +12,7 @@
   }
   .tab-button {
     padding: 10px 20px;
-    background-color: #27303f;
+    background-color: #1e1e1e;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -21,7 +21,7 @@
     transition: background 0.3s;
   }
   .tab-button:hover {
-    background-color: #1f2a38;
+    background-color: #103a3a;
   }
   .tab-button.active {
     background-color: var(--accent-color);
@@ -40,11 +40,11 @@
     flex: 1;
     max-width: 300px;
     padding: 10px;
-    font-size: 1rem;
-    border: 1px solid var(--accent-color);
+    font-size: 1rem;  
     border-radius: 4px;
     background-color: var(--input-bg);
     color: var(--input-text);
+    border: 0px solid var(--accent-color);
   }
   .filters {
     display: flex;
@@ -53,7 +53,7 @@
   }
   .filters select {
     padding: 10px;
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     border-radius: 4px;
     background-color: var(--input-bg);
     color: var(--input-text);
@@ -108,15 +108,15 @@
   .pagination button {
     margin: 0 5px;
     padding: 5px 10px;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
+    background-color: #1e1e1e;
+    color: white;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     transition: background 0.3s;
   }
   .pagination button:hover {
-    background-color: #0f5da1;
+    background-color: var(--accent-color);
   }
   .pagination span {
     margin: 0 5px;
@@ -140,7 +140,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     border-radius: 4px;
     background-color: var(--input-bg);
     color: var(--input-text);
@@ -158,13 +158,13 @@
     transition: background 0.3s;
   }
   .team-making-form button:hover {
-    background-color: #0f5da1;
+    background-color: #1f6767;
   }
   .team-container {
     margin-top: 20px;
     padding: 15px;
     background: var(--playercard-bg);
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     border-radius: 6px;
     text-align: center;
   }
@@ -179,7 +179,7 @@
     margin: 20px auto 40px;
     background-color: var(--playercard-bg);
     padding: 20px;
-    border: 1px solid var(--playercard-border);
+    border: 0px solid var(--playercard-border);
     border-radius: 4px;
   }
   .assistance-form label,
@@ -195,7 +195,7 @@
     width: 150px;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     border-radius: 4px;
     background-color: var(--input-bg);
     color: var(--input-text);
@@ -205,7 +205,7 @@
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     border-radius: 4px;
     background-color: var(--input-bg);
     color: var(--input-text);
@@ -245,7 +245,7 @@
     transition: background 0.3s;
   }
   #assistanceSection button:hover {
-    background-color: #0f5da1;
+    background-color: #1f6767;
   }
   
   /* ---------- Responsive Adjustments ---------- */
@@ -275,7 +275,7 @@
     margin-top: 20px;
     padding: 20px;
     /* Use a subtle border or background if you like; or keep it minimal */
-    border: 1px solid var(--playercard-border);
+    border: 0px solid var(--playercard-border);
     border-radius: 6px;
     text-align: center;
   }
@@ -294,7 +294,7 @@
     width: 180px; /* or 100% if you want them stacked */
     padding: 8px 12px;
     margin: 5px;
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     border-radius: 4px;
     background-color: var(--input-bg);
     color: var(--input-text);
@@ -315,7 +315,7 @@
     transition: background 0.3s;
   }
   .invite-form button:hover {
-    background-color: #0f5da1;
+    background-color: #1f6767;
   }
   
   /* ==============================
@@ -396,7 +396,7 @@
   max-width: 300px;           /* limit how wide they get, adjust as needed */
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid var(--accent-color);
+  border: 0px solid var(--accent-color);
   border-radius: 4px;
   background-color: var(--input-bg);
   color: var(--input-text);
@@ -460,7 +460,7 @@
 
 .assistance-form button:hover,
 .mentor-form button:hover {
-  background-color: #0f5da1;
+  background-color: #1f6767;
 }
 /* ================================
    Days Checklist in a Single Line
@@ -493,7 +493,7 @@
     width: 90px;              /* Adjust input box width */
     padding: 6px;
     border-radius: 4px;
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     text-align: center;
   }
 /* =====================================================
@@ -511,7 +511,7 @@
   text-align: center;       /* Center text inside children */
   gap: 15px;                /* Consistent spacing between elements */
   background-color: transparent; /* Matches page background */
-  border: 1px solid var(--playercard-border); /* Optional subtle border */
+  border: 0px solid var(--playercard-border); /* Optional subtle border */
   border-radius: 4px;
 }
 
@@ -531,7 +531,7 @@
   width: 100%;
   max-width: 400px;       /* Wider option box */
   padding: 10px;
-  border: 1px solid var(--accent-color);
+  border: 0px solid var(--accent-color);
   border-radius: 4px;
   background-color: var(--input-bg);
   color: var(--input-text);
@@ -545,7 +545,7 @@
   width: 100%;
   max-width: 400px;
   padding: 10px;
-  border: 1px solid var(--accent-color);
+  border: 0px solid var(--accent-color);
   border-radius: 4px;
   background-color: var(--input-bg);
   color: var(--input-text);
@@ -571,7 +571,7 @@
 .time-slot input[type="time"] {
   width: 90px;                  /* Adjust as needed */
   padding: 6px;
-  border: 1px solid var(--accent-color);
+  border: 0px solid var(--accent-color);
   border-radius: 4px;
   text-align: center;
 }
@@ -611,5 +611,5 @@
 }
 .assistance-form button:hover,
 .mentor-form button:hover {
-  background-color: #0f5da1;
+  background-color: #1f6767;
 }

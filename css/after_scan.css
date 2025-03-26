@@ -50,7 +50,7 @@
   
   /* Profile Card styling */
   .profile-card {
-    background-color: #27303f;
+    background-color: #1e1e1e;
     border: 1px solid var(--playercard-border);
     border-radius: 8px;
     padding: 20px;
@@ -96,7 +96,7 @@
   
   /* Booking Form styling */
   .booking-form {
-    background-color: #27303f;
+    background-color: #1e1e1e;
     border: 1px solid var(--playercard-border);
     border-radius: 8px;
     padding: 20px;

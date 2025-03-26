@@ -40,30 +40,31 @@
 .qr-btn {
   display: inline-block;
   padding: 8px 16px;
-  background-color: #192a45;
+  background-color: #1e1e1e;
   color: #fff;
   border-radius: 4px;
   transition: background 0.3s;
 }
 
 .qr-btn:hover {
-  background-color: #1f345a;
+  background-color: var(--accent-color);
 }
 
 .booking-timer {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   gap: 20px;
   padding: 20px;
-  background-color: #192a45;
+  background-color: #1e1e1e;
   border-radius: 8px;
-  border: 1px solid #2b3d5c;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid #121212;
 }
 
 .timer-container {
   text-align: center;
   min-width: 180px;
+  background-color: #1e1e1e;
 }
 
 .timer-container h3 {
@@ -80,13 +81,13 @@
   font-family: monospace;
   padding: 10px;
   border-radius: 5px;
-  background-color: #0c1422;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+  background-color: #1e1e1e;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0);
   margin-bottom: 5px;
 }
 
 .booking-info {
-  border-left: 1px solid #2b3d5c;
+  border-left: 1px solid var(--accent-color);
   padding-left: 20px;
   text-align: left;
 }
@@ -186,7 +187,7 @@
 }
 
 .testimonial-card {
-  background-color: #192a45;
+  background-color: #1e1e1e;
   border-radius: 8px;
   padding: 20px;
   transition: transform 0.3s ease;
@@ -226,26 +227,26 @@
 ===================================== */
 @media (max-width: 768px) {
   .header-content {
-    flex-wrap: wrap;
-    justify-content: center;
-    position: relative;
+    flex-wrap: nowrap;         /* Prevent wrapping */
+    justify-content: space-between;
+    padding: 0 20px;           /* Reduce side padding for better fit */
   }
   .menu-btn {
-    position: absolute;
-    left: 20px;
-    top: 10px;
+    position: relative;        /* Remove absolute positioning */
+    left: 0;
+    top: 0;
   }
   .header-center {
-    margin-top: 40px;
+    margin-top: 0;             /* Remove extra top margin */
   }
   .header-right {
-    position: absolute;
-    right: 20px;
-    top: 10px;
+    position: relative;        /* Remove absolute positioning */
+    right: 0;
+    top: 0;
   }
   .qr-player-content {
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
   }
   .occupancy-details {
     flex-direction: column;
@@ -254,5 +255,14 @@
   .detail-item {
     margin: 0 auto 15px;
     min-width: unset;
+  }
+  .timer-container {
+    min-width: auto; /* Allow flexibility */
+    width: 100%;     /* Make it scale within its container */
+    padding: 10px;
+  }
+  .timer {
+    font-size: 1.8rem; /* Reduce the size for mobile */
+    padding: 8px;
   }
 }

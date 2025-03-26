@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/occupancy.css" />
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
   <!-- Chart.js for data visualization -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -16,7 +18,7 @@
   <!-- Sidebar (Collapsible) -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <h2 style="color:#0782da">Menu</h2>
+      <h2 style="color:#2d9a96">MENU</h2>
       <button class="sidebar-close" id="sidebarClose">
         <i class="fas fa-times"></i>
       </button>
@@ -24,7 +26,7 @@
     <nav class="sidebar-nav">
       <ul>
         <li class="menu-parent">
-          <span class="menu-title" style="color:#0782da">Platform</span>
+          <span class="menu-title" style="color:#2d9a96">Platform</span>
           <ul class="submenu">
             <li><a href="index.html">Scan</a></li>
             <li><a href="index.html">Sports</a></li>
@@ -33,7 +35,7 @@
           </ul>
         </li>
         <li class="menu-parent">
-          <span class="menu-title" style="color:#0782da">Features</span>
+          <span class="menu-title" style="color:#2d9a96">Features</span>
           <ul class="submenu">
             <li><a href="occupancy.html">Occupancy</a></li>
             <li><a href="playersearch.html">Player Search</a></li>
@@ -50,17 +52,17 @@
   <header>
     <div class="header-content">
       <!-- Menu Button (Styled like the login button) -->
-      <div class="menu-btn" id="menuBtn">Menu</div>
+      <div class="menu-btn" id="menuBtn">MENU</div>
       <!-- Centered SportsBook Logo & Text -->
       <div class="header-center">
         <a href="index.html" class="logo-link">
-          <img src="https://github.com/Kirat24303/sportsBook/blob/main/sportsBook_logo.png?raw=true" alt="SportsBook Logo" class="header-logo" />
+          <img src="sblogo.png" alt="SportsBook Logo" class="header-logo" />
           <span class="logo-text">SportsBook</span>
         </a>
       </div>
       <!-- Login Button on the Right -->
       <div class="header-right">
-        <a href="#" class="login-btn">Log in</a>
+        <a href="#" class="login-btn">LOGIN</a>
       </div>
     </div>
   </header>
@@ -95,33 +97,33 @@
         <!-- Occupancy Card -->
         <div class="occupancy-card">
           <div class="occupancy-header">
-            <h2 id="sportTitle" style="color:#0782da">Badminton</h2>
+            <h2 id="sportTitle" style="color:#2d9a96">Badminton</h2>
             <span class="status-badge available">Available</span>
           </div>
           <div class="occupancy-details">
             <div class="detail-item">
               <i class="fas fa-users"></i>
               <div class="detail-info">
-                <span class="detail-label" style="color:#0782da">Students Present</span>
+                <span class="detail-label" style="color:#2d9a96">Students Present</span>
                 <span id="studentCount" class="detail-value">4</span>
               </div>
             </div>
             <div class="detail-item">
               <i class="fas fa-percentage"></i>
               <div class="detail-info">
-                <span class="detail-label" style="color:#0782da">Occupancy Rate</span>
+                <span class="detail-label" style="color:#2d9a96">Occupancy Rate</span>
                 <span id="occupancyRate" class="detail-value">40%</span>
               </div>
             </div>
           </div>
-          <h3 style="color:#0782da">Equipment in Use</h3>
+          <h3 style="color:#2d9a96">Equipment in Use</h3>
           <div class="equipment-list" id="equipmentList">
             <!-- Updated dynamically -->
           </div>
         </div>
         <!-- Court Visualization -->
         <div class="court-visualization">
-          <h3 style="color:#0782da">Court Visualization</h3>
+          <h3 style="color:#2d9a96">Court Visualization</h3>
           <div class="court-container" id="courtContainer">
             <!-- Injected by JS -->
           </div>
@@ -145,10 +147,10 @@
         </select>
       </div>
       <div class="timetable-container">
-        <h2 id="timeTableSportTitle" style="color:#0782da">Badminton - Weekly Schedule</h2>
+        <h2 id="timeTableSportTitle" style="color:#2d9a96">Badminton - Weekly Schedule</h2>
         <div class="timetable">
           <div class="timetable-header">
-            <div class="time-column">06:00 - 08:00</div>
+            <div class="time-column">             </div>
             <div class="day-column">Monday</div>
             <div class="day-column">Tuesday</div>
             <div class="day-column">Wednesday</div>
@@ -160,7 +162,7 @@
           <div class="timetable-body" id="timetableBody">
             <!-- Full timetable details -->
             <div class="time-row">
-              <div class="time-column">06:00 - 08:00</div>
+              <div class="time-column">6:00 - 8:00</div>
               <div class="day-column faculty" style="color:#fff">Faculty</div>
               <div class="day-column">--</div>
               <div class="day-column faculty" style="color:#fff">Faculty</div>
@@ -170,7 +172,7 @@
               <div class="day-column">--</div>
             </div>
             <div class="time-row">
-              <div class="time-column">08:00 - 10:00</div>
+              <div class="time-column">8:00 - 10:00  </div>
               <div class="day-column girls" style="color:#fff">Girls</div>
               <div class="day-column team" style="color:#fff">College Team</div>
               <div class="day-column girls" style="color:#fff">Girls</div>
@@ -180,7 +182,7 @@
               <div class="day-column open" style="color:#fff">Open</div>
             </div>
             <div class="time-row">
-              <div class="time-column">10:00 - 12:00</div>
+              <div class="time-column">10:00 - 12:00 </div>
               <div class="day-column open" style="color:#fff">Open</div>
               <div class="day-column open" style="color:#fff">Open</div>
               <div class="day-column open" style="color:#fff">Open</div>
@@ -190,7 +192,7 @@
               <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
             </div>
             <div class="time-row">
-              <div class="time-column">12:00 - 14:00</div>
+              <div class="time-column">12:00 - 14:00 </div>
               <div class="day-column">--</div>
               <div class="day-column">--</div>
               <div class="day-column">--</div>
@@ -200,7 +202,7 @@
               <div class="day-column open" style="color:#fff">Open</div>
             </div>
             <div class="time-row">
-              <div class="time-column">14:00 - 16:00</div>
+              <div class="time-column">14:00 - 16:00 </div>
               <div class="day-column open" style="color:#fff">Open</div>
               <div class="day-column open" style="color:#fff">Open</div>
               <div class="day-column open" style="color:#fff">Open</div>
@@ -210,7 +212,7 @@
               <div class="day-column team" style="color:#fff">College Team</div>
             </div>
             <div class="time-row">
-              <div class="time-column">16:00 - 18:00</div>
+              <div class="time-column">16:00 - 18:00 </div>
               <div class="day-column team" style="color:#fff">College Team</div>
               <div class="day-column girls" style="color:#fff">Girls</div>
               <div class="day-column team" style="color:#fff">College Team</div>
@@ -220,7 +222,7 @@
               <div class="day-column open" style="color:#fff">Open</div>
             </div>
             <div class="time-row">
-              <div class="time-column">18:00 - 20:00</div>
+              <div class="time-column">18:00 - 20:00 </div>
               <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
               <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
               <div class="day-column mtech" style="color:#fff">MTech/PhD</div>
@@ -244,23 +246,23 @@
         <div class="timetable-legend">
           <div class="legend-item">
             <span class="legend-color faculty"></span>
-            <span class="legend-text" style="color:#0782da">Faculty</span>
+            <span class="legend-text" style="color:#2d9a96">Faculty</span>
           </div>
           <div class="legend-item">
             <span class="legend-color team"></span>
-            <span class="legend-text" style="color:#0782da">College Team</span>
+            <span class="legend-text" style="color:#2d9a96">College Team</span>
           </div>
           <div class="legend-item">
             <span class="legend-color girls"></span>
-            <span class="legend-text" style="color:#0782da">Girls</span>
+            <span class="legend-text" style="color:#2d9a96">Girls</span>
           </div>
           <div class="legend-item">
             <span class="legend-color mtech"></span>
-            <span class="legend-text" style="color:#0782da">MTech/PhD</span>
+            <span class="legend-text" style="color:#2d9a96">MTech/PhD</span>
           </div>
           <div class="legend-item">
             <span class="legend-color open"></span>
-            <span class="legend-text" style="color:#0782da">Open</span>
+            <span class="legend-text" style="color:#2d9a96">Open</span>
           </div>
         </div>
       </div>
@@ -299,19 +301,19 @@
           <div class="stats-grid">
             <div class="stat-card">
               <div class="stat-value" id="totalUsers">245</div>
-              <div class="stat-label" style="color:#0782da">Total Users This Month</div>
+              <div class="stat-label" style="color:#2d9a96">Total Users This Month</div>
             </div>
             <div class="stat-card">
               <div class="stat-value" id="avgDuration">1.5</div>
-              <div class="stat-label" style="color:#0782da">Average Session (hours)</div>
+              <div class="stat-label" style="color:#2d9a96">Average Session (hours)</div>
             </div>
             <div class="stat-card">
               <div class="stat-value" id="peakDay">Friday</div>
-              <div class="stat-label" style="color:#0782da">Most Popular Day</div>
+              <div class="stat-label" style="color:#2d9a96">Most Popular Day</div>
             </div>
             <div class="stat-card">
               <div class="stat-value" id="peakTime">18:00</div>
-              <div class="stat-label" style="color:#0782da">Peak Time</div>
+              <div class="stat-label" style="color:#2d9a96">Peak Time</div>
             </div>
           </div>
         </div>
@@ -324,7 +326,7 @@
     <div class="footer-content">
       <div class="footer-links">
         <div class="footer-column">
-          <h4 style="color:#0782da">Platform</h4>
+          <h4 style="color:#2d9a96">Platform</h4>
           <ul>
             <li><a href="#">Scan</a></li>
             <li><a href="#">Sports</a></li>
@@ -333,7 +335,7 @@
           </ul>
         </div>
         <div class="footer-column">
-          <h4 style="color:#0782da">Features</h4>
+          <h4 style="color:#2d9a96">Features</h4>
           <ul>
             <li><a href="occupancy.html">Occupancy</a></li>
             <li><a href="playersearch.html">Player Search</a></li>
@@ -342,7 +344,7 @@
           </ul>
         </div>
         <div class="footer-column">
-          <h4 style="color:#0782da">Resources</h4>
+          <h4 style="color:#2d9a96">Resources</h4>
           <ul>
             <li><a href="#">Help Center</a></li>
             <li><a href="#">Community</a></li>
@@ -351,7 +353,7 @@
           </ul>
         </div>
         <div class="footer-column">
-          <h4 style="color:#0782da">Company</h4>
+          <h4 style="color:#2d9a96">Company</h4>
           <ul>
             <li><a href="https://www.instagram.com/kirat.g09/?utm_source=qr">About Us</a></li>
             <li><a href="#">Careers</a></li>
@@ -578,8 +580,8 @@
           datasets: [{
             label: 'Students',
             data: [25,32,28,35,42,38,30],
-            backgroundColor: '#0782da',
-            borderColor: '#0782da',
+            backgroundColor: '#2d9a96',
+            borderColor: '#2d9a96',
             borderWidth: 1
           }]
         },
@@ -602,7 +604,7 @@
             label: 'Students',
             data: [120,145,135,160],
             backgroundColor: 'rgba(7,130,218,0.2)',
-            borderColor: '#0782da',
+            borderColor: '#2d9a96',
             borderWidth: 2,
             tension: 0.3,
             fill: true
@@ -626,8 +628,8 @@
           datasets: [{
             label: 'Average Users',
             data: [8,15,12,5,18,25,30,20],
-            backgroundColor: '#0782da',
-            borderColor: '#0782da',
+            backgroundColor: '#2d9a96',
+            borderColor: '#2d9a96',
             borderWidth: 1
           }]
         },

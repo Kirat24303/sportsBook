@@ -5,7 +5,7 @@
 
 /* Ensure the body background and text match the theme */
 body {
-    background: linear-gradient(to bottom, #0f1726, #0e1624);
+    background: #121212;  
     color: var(--white);
     text-align: center;
     font-family: var(--font-family);
@@ -75,7 +75,7 @@ body {
   
   /* Toss Button Styling */
   .toss-button {
-    background: linear-gradient(145deg, #00a0c8, #0080a0);
+    background: var(--accent-color);
     color: var(--white);
     border: none;
     padding: 1rem 2rem;
@@ -86,7 +86,7 @@ body {
     transition: background 0.3s;
   }
   .toss-button:hover {
-    background: linear-gradient(145deg, #00b0d8, #0090b0);
+    background: #1f6767;
   }
   
   /* Result Display */

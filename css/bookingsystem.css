@@ -13,8 +13,8 @@
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    background-color: transparent; /* Matches page background */
-    border: 1px solid var(--playercard-border);
+    background-color: #1e1e1e; /* Matches page background */
+    border: 0px solid var(--playercard-border);
     border-radius: 4px;
     display: flex;
     flex-direction: column;
@@ -36,7 +36,7 @@
     width: 100%;
     max-width: 400px;
     padding: 10px;
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     border-radius: 4px;
     background-color: var(--input-bg);
     color: var(--input-text);
@@ -61,7 +61,7 @@
   .booking-form .time-slot input[type="time"] {
     width: 90px;
     padding: 6px;
-    border: 1px solid var(--accent-color);
+    border: 0px solid var(--accent-color);
     border-radius: 4px;
     text-align: center;
   }
@@ -78,7 +78,7 @@
     transition: background 0.3s;
   }
   .booking-form button:hover {
-    background-color: #0f5da1;
+    background-color: #1f6767;
   }
   
   /* =====================================
@@ -95,7 +95,7 @@
   
   /* Card styling: divided into top and bottom halves */
   .cards-grid .card {
-    background-color: #27303f;
+    background-color: #1e1e1e;
     border-radius: 8px;
     overflow: hidden;
     display: flex;
@@ -124,7 +124,7 @@
   
   /* Bottom half: details with background color #202c44 */
   .card-bottom {
-    background-color: #202c44;
+    background-color: #1e1e1e;
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -159,7 +159,7 @@
     transition: background 0.3s;
   }
   .card-footer .book-btn:hover {
-    background-color: #0f5da1;
+    background-color: #1f6767;
   }
   
   /* =====================================
@@ -193,7 +193,7 @@
 }
 
 .card-bottom .book-btn:hover {
-  background-color: #0f5da1 !important;
+  background-color: #1f6767 !important;
 }
 
 
