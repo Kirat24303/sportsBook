@@ -222,7 +222,7 @@
         equipmentList.appendChild(equipmentItem);
       });
     }
-
+  
     // Increment/Decrement functions for number inputs
     function incrementValue(id) {
       const input = document.getElementById(id);
@@ -238,13 +238,14 @@
         input.value = currentValue - 1;
       }
     }
-
+  
     // Booking form submission handler
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
       alert('Booking confirmed!');
+      window.location.href = "index.html";
     });
-
+  
     // Sidebar Toggle
     const menuBtn = document.getElementById('menuBtn');
     const sidebar = document.getElementById('sidebar');
@@ -255,6 +256,6 @@
     sidebarClose.addEventListener('click', () => {
       sidebar.classList.remove('expanded');
     });
-  </script>
+  </script>  
 </body>
 </html>

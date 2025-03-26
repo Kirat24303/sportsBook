@@ -18,18 +18,18 @@
   .menu-btn {
     position: absolute;
     left: 20px;
-    top: 50%;
+    top: 37%;
     transform: translateY(-50%);
     font-size: 0.9rem;
     color: var(--bg-color);
-    background-color: var(--#0066ff);
-    padding: 7px 15px;
+    background-color: var(--accent-color);
+    padding: 5px 10px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
   }
   .menu-btn:hover {
-    background-color: #0f5da1;
+    background-color: #1f6767;
   }
   
   /* Ensure the login button is flush right */
@@ -190,7 +190,7 @@
     transition: background 0.3s;
   }
   .submit-btn:hover {
-    background-color: #0f5da1;
+    background-color: #1f6767;
   }
   
   /* Responsive Adjustments */
